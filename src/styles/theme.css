@@ -1,0 +1,17 @@
+/* theme.css */
+:root {
+  /* TODO: カラーテーマ決める */
+}
+
+body {
+}
+
+a {
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+  }
+}
+.body-dark-mode {
+}

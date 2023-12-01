@@ -1,63 +1,39 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  tag: string;
+  href: string;
 }
 
-const { href, title, body } = Astro.props;
+const { title, tag, href } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.25rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+<article
+  class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
+>
+  <img
+    src="https://picsum.photos/200"
+    alt=""
+    class="absolute inset-0 -z-10 h-full w-full object-cover"
+  />
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"
+  >
+  </div>
+  <div
+    class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"
+  >
+  </div>
 
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
-	}
-</style>
+  <div
+    class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300"
+  >
+    <time datetime="2020-03-16" class="mr-8">Mar 16, 2020</time>
+  </div>
+  <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
+    <a href={href}>
+      <span class="absolute inset-0"></span>
+      {title}
+    </a>
+  </h3>
+</article>
