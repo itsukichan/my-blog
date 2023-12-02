@@ -4,29 +4,27 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { getBlogs } from "../../libs/microcms";
 import Card from "../../components/Card.astro";
+import Text from "../../components/Text.astro";
 
-const response = await getBlogs({ fields: ["id", "title", "tag"] });
+const response = await getBlogs({ fields: ["id", "title", "tag", "updatedAt", "keyVisual"] });
 ---
 
-<Layout title="Top">
+<Layout title="Blog - Koki Miyakubo - Homepage">
   <Header />
-  <main class="max-w-screen-md mx-auto px-4 sm:px-6 sm:px-8">
-
-    <div class="bg-white py-24 sm:py-32">
-      <div class="mx-auto max-w-7xl px-6 sm:px-8">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
-          <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p>
-        </div>
-        <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
-          {
-          response.contents.map((blog: any) => (
-          <Card title={blog.title} tag={blog.tag} href={`/blog/${blog.id}`} />
-          ))
-          }
-        </div>
+  <main class="mx-auto max-w-2xl px-6 sm:px-8">
+    <section class="mt-16 bg-white bg-opacity-25 backdrop-blur-xl p-4 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl">From
+        the blog</h2>
+      <Text text='I will be sharing insights on programming and design in my articles.' />
       </div>
-    </div>
+      <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
+        {
+        response.contents.map((blog: any) => (
+        <Card title={blog.title} tag={blog.tag} href={`/blog/${blog.id}`} keyVisual={blog.keyVisual}
+          updatedAt={blog.updatedAt} />
+        ))
+        }
+    </section>
   </main>
   <Footer />
 </Layout>
