@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro"
 import { getBlogDetail, getBlogs } from "../../libs/microcms";
 
 export async function getStaticPaths() {
@@ -12,13 +14,20 @@ export async function getStaticPaths() {
 const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 ---
-
-<Layout title="Blog Detail">
-  <main class="mx-auto px-4 sm:px-6 sm:px-8 mb-10">
-    <img src={blog.keyVisual} alt="" />
-    <h1>{blog.title}</h1>
-    <p>公開日時: {new Date(blog.publishedAt).toLocaleString()}</p>
-    <p>tags: {blog.tag}</p>
-    <div set:html={blog.content} />
+<Layout title={`${blog.title} - Koki Miyakubo - Homepage`}>
+  <Header />
+  <main class="mx-auto max-w-2xl px-6 sm:px-8">
+    <section class="mt-16 bg-white bg-opacity-25">
+      <img src={blog.keyVisual.url} alt="" />
+      <h1 class="text-2xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl mt-6 sm:mt-10">{blog.title}</h1>
+      <p class="text-background-dark dark:text-background-light mt-2 sm:mt-4">
+        publishedAt: {new Date(blog.publishedAt).toLocaleString()}
+      </p>
+      <p class="text-background-dark dark:text-background-light sm:mt-4">
+        tags: {blog.tag}
+      </p>
+      <div class="text-background-dark dark:text-background-light mt-4 sm:mt-6" set:html={blog.content} />
+    </section>
   </main>
+  <Footer />
 </Layout>
