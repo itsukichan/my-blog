@@ -28,15 +28,7 @@ module.exports = {
     backgroundImage: {
       "tutorial-bg": "url('/public/bg-graphic.jpg')",
     },
-    extend: {
-      spacing: {
-        128: "32rem",
-        144: "36rem",
-      },
-      borderRadius: {
-        "4xl": "2rem",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

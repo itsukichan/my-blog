@@ -3,20 +3,32 @@ import Button from './Button.astro'
 import Avatar from './Avatar.astro'
 import Text from './Text.astro'
 const imgPath = '/src/images/img-avatar.png'
+
+const profileDetails = {
+  name: 'Koki Miyakubo',
+  job: 'Frontend Engineer',
+  text: 'I am a front-end engineer living in Tokyo. Currently working mainly on web production as an SES.',
+  avatar: '/src/images/img-avatar.png',
+  portfolioLink: '/portfolio',
+  blogLink: '/blog'
+};
 ---
 
-<div class="grid grid-cols-4 -mt-8 bg-opacity-25 backdrop-blur-lg p-4 rounded-lg shadow-lg">
-  <div class="col-span-3">
-    <h1 class="text-2xl font-bold text-background-dark dark:text-background-light">Koki Miyakubo</h1>
-    <p class="text-sm font-semibold text-background-dark dark:text-background-light">Frontend Engineer</p>
-    <Text />
+<section class="grid grid-cols-1 md:grid-cols-4 -mt-8 bg-opacity-25 backdrop-blur-lg px-4 py-8 rounded-lg shadow-lg">
+  <div class="col-span-1 md:col-span-3">
+    <h1 class="text-2xl font-bold text-background-dark dark:text-background-light">
+      {profileDetails.name}
+    </h1>
+    <p class="text-sm font-semibold text-background-dark dark:text-background-light">
+      {profileDetails.job}
+    </p>
+    <Text text={profileDetails.text} />
   </div>
-  <div class="col-span-1 -mt-12">
-    <Avatar imgSrc={imgPath} />
+  <div class="flex justify-center md:col-span-1 mt-4 md:-mt-16">
+    <Avatar imgSrc={profileDetails.avatar} />
   </div>
-  <div class="grid grid-cols-2 gap-4 col-span-4 mt-6 justify-center">
-    <Button link="/portfolio" text="My Portfoiio" color="accent" />
-    <Button link="/blog" text="My Blog" color="secondary-accent" />
+  <div class="grid grid-cols-2 gap-4 md:gap-10 md:col-span-4 mt-10 justify-center">
+    <Button link={profileDetails.portfolioLink} text="My Portfoiio" color="accent" />
+    <Button link={profileDetails.blogLink} text="My Blog" color="secondary-accent" />
   </div>
-
-</div>
+</section>
