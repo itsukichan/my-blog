@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Profile from "../components/Profile.astro";
-import Mainvisual from "../components/Mainvisual.astro";
+import MainVisual from "../components/MainVisual.astro";
 import Text from "../components/Text.astro";
 import Feed from "../components/Feed.astro";
 ---
@@ -11,10 +11,16 @@ import Feed from "../components/Feed.astro";
 <Layout title="Koki Miyakubo - Homepage">
   <Header />
   <main class="mx-auto max-w-2xl px-6 sm:px-8">
-    <Mainvisual />
+    <MainVisual />
     <Profile />
-    <section class="mt-16 bg-white bg-opacity-25 backdrop-blur-xl p-4 rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold inline-flex border-b-secondary-accent border-b-4 text-background-dark dark:text-background-light">Bio</h2>
+    <section
+      class="mt-16 bg-white bg-opacity-25 backdrop-blur-xl p-4 rounded-lg shadow-lg"
+    >
+      <h2
+        class="text-xl font-semibold inline-flex border-b-secondary-accent border-b-4 text-background-dark dark:text-background-light"
+      >
+        Bio
+      </h2>
       <Feed />
     </section>
   </main>
