@@ -1,4 +1,6 @@
 ---
+import ThemeToggleButton from './ThemeToggleButton.astro';
+
 const logo = '/src/images/logo.svg';
 const sectionsData = [{
     title: "Portfolio",
@@ -17,79 +19,65 @@ const sectionsData = [{
 ];
 
 ---
+<!-- <header class="sticky top-0 z-10 bg-white bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg">
+  <nav class="mx-auto flex max-w-2xl items-center justify-between p-6 sm:px-8" aria-label="Global"> -->
 
-<header class="sticky top-0 z-10 bg-white bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg">
+<header class="sticky top-0 z-10 bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg">
   <nav class="mx-auto flex max-w-2xl items-center justify-between p-6 sm:px-8" aria-label="Global">
     <div class="flex sm:flex-1">
       <a href="/" class="-m-1.5 p-1.5 flex gap-2 items-center">
-        <img class="h-8 w-auto" src={logo} alt="" />
+        <svg class="h-8 w-auto fill-current text-background-dark dark:text-background-light" preserveAspectRatio="xMidYMid meet" viewBox="0 0 375 374.999991" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify"><clipPath id="a"><path d="m0 43.636719h375v288h-375zm0 0"/></clipPath><g clip-path="url(#a)"><path d="m374.703125 126.519531c-.019531 17.105469-3.546875 40.933594-7.113281 48.410157-5.90625 12.402343-13.011719-.421876-107.527344-55.597657-14.980469-8.746093-33.167969-12.476562-24.761719-23.390625 52.773438-68.527344 128.421875-55.882812 139.402344 30.578125zm-207.597656 85.144531c-18.480469 36.71875-64.96875 83.34375-90.941407 107.148438-16.425781 15.066406-37.917968 2.4375-37.300781-33.546875.289063-50.28125 50.175781-80.195313 74.820313-97.859375 13.546875-9.703125 31.882812-17.632812 46-7.871094 6.703125 4.636719 10.5625 6.570313 10.910156 12.636719.378906 6.773437-.40625 13.359375-3.488281 19.492187zm-38.832031 2.203126c-19.085938 9.847656-17.347657 19.402343-9.621094 20.066406 6.578125-.300782 13.957031-7.046875 15.957031-13.796875.996094-3.339844-2.410156-8.292969-6.335937-6.269531zm203.453124 92.421874c-9.003906 28.414063-45.5625 3.945313-66.164062-17.480468-15.097656-15.6875-23.335938-21.15625-48.582031-61.40625-5.300781-8.445313-8.574219-17.648438-9.417969-27.898438-.769531-9.394531 9.386719-22.695312 21.953125-22.820312 32.898437-.320313 70.386719 35.222656 89.054687 64.378906 12.339844 19.265625 22.007813 37.285156 13.15625 65.226562zm-85.121093-83.523437c-5.972657-11.730469-22.261719-14.675781-17.835938-1.367187 1.871094 5.617187 6.070313 9.347656 10.421875 12.921874 2.90625 2.386719 5.738282 2.089844 7.816406-1.035156 2.203126-3.019531.421876-8.890625-.402343-10.519531zm-245.335938-68.273437c2.425781 11.203124 12.890625 11.828124 23.207031 6.59375 10.9375-5.550782 36.765626-18.683594 47.414063-24.574219 67.484375-37.300781 74.097656-27.820313 67.082031-43.785157-11.546875-26.238281-42.3125-42.082031-60.511718-47.238281-19.464844-5.507812-39.847657.679688-55.554688 26.484375-13.957031 22.921875-26.191406 61.480469-21.636719 82.519532zm204.058594 127.933593c-26.296875-1.335937-29.386719-2.191406-36.695313.40625-9.546874 3.386719-12.863281 13.089844-7.492187 21.683594 5.105469 8.164063 11.5 15.367187 18.070313 22.332031 5.824218 6.183594 13.59375 5.921875 19.460937-.226562 1.964844-2.0625 17.765625-23.820313 17.644531-32.84375-.726562-6.925782-3.71875-10.988282-10.988281-11.351563zm0 0" fill="currentColor"/></g></svg>
+        <!-- <img class="h-8 w-auto" src={logo} alt="" /> -->
         <span class="font-semibold text-md text-background-dark dark:text-background-light">Koki Miyakubo</span>
       </a>
     </div>
+    <ThemeToggleButton />
     <div class="flex sm:hidden">
-      <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400">
-        <span class="sr-only">メニューを開く</span>
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      <button id="open-menu" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-background-dark dark:text-background-light">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
     </div>
     <div class="hidden sm:flex sm:gap-x-12">
       {
-      sectionsData.map((data) => (
-      <a href={data.link} class="text-sm font-semibold leading-6 text-background-dark dark:text-background-light" target={data.blank ? "_blank" : "" }>
-        {data.title}
-      </a>
-      ))
-      }
-    </div>
-    <div class="hidden sm:flex sm:flex-1 sm:justify-end">
-      <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
-      <!-- TODO: color mode change js logics -->
-
-      <button id="toggle" type="button"
-        class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
-        role="switch" aria-checked="false">
-        <span class="sr-only">カラーモードk切り替え</span>
-        <span aria-hidden="true" id="toggle-icon"
-          class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out flex items-center justify-center">
-          🌞
-        </span>
-      </button>
-
+        sectionsData.map((data) => (
+        <a href={data.link} class="text-sm font-semibold leading-6 text-background-dark dark:text-background-light" target={data.blank ? "_blank" : "" }>
+          {data.title}
+        </a>
+        ))
+        }
     </div>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
-  <div class="sm:hidden" role="dialog" aria-modal="true">
+  <div id="mobile-menu" class="hidden sm:hidden" role="dialog" aria-modal="true">
     <!-- Background backdrop, show/hide based on slide-over state. -->
-    <div class="fixed inset-0 z-10"></div>
-    <div
-      class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+    <div class="fixed inset-0 z-20"></div>
+    <div class="fixed top-0 min-h-screen right-0 z-20 w-full overflow-y-auto bg-background-light dark:bg-background-dark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
       <div class="flex items-center justify-between">
         <a href="/" class="-m-1.5 p-1.5 flex gap-2 items-center">
           <img class="h-8 w-auto" src={logo} alt="" />
           <span class="font-semibold text-md text-background-dark dark:text-background-light">Koki Miyakubo</span>
         </a>
-        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-400">
+        <button id="close-menu" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
           <span class="sr-only">Close menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          <svg class="h-6 w-6 text-background-dark dark:text-background-light" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
       <div class="mt-6 flow-root">
-        <div class="-my-6 divide-y divide-gray-500/25">
+        <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
             {
-            sectionsData.map((data) => (
-            <a href={data.link}
-              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-background-dark dark:text-background-light hover:bg-gray-800"
-              target={data.blank ? "_blank" : "" }>
-              {data.title}
-            </a>
-            ))
+              sectionsData.map((data) => (
+              <a href={data.link}
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-background-dark dark:text-background-light hover:bg-gray-800"
+                target={data.blank ? "_blank" : "" }>
+                {data.title}
+              </a>
+              ))
             }
           </div>
         </div>
@@ -99,31 +87,19 @@ const sectionsData = [{
 </header>
 
 <script type="module">
-  function toggleDarkMode() {
-    const toggle = document.getElementById('toggle');
-    const icon = document.getElementById('toggle-icon');
-    const isToggled = toggle.getAttribute('aria-checked') === 'true';
-    toggle.setAttribute('aria-checked', !isToggled);
-    icon.textContent = isToggled ? '🌞' : '🌝';
-    icon.classList.toggle('translate-x-5', !isToggled);
-    icon.classList.toggle('translate-x-0', isToggled);
+  const openMenuButton = document.getElementById('open-menu');
+  const closeMenuButton = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-    // ダークモードの状態をトグル
-    document.documentElement.classList.toggle('dark');
-    // 状態をローカルストレージに保存
-    localStorage.setItem('darkMode', !isToggled);
+  function toggleMenu(isOpen) {
+    mobileMenu.classList.toggle('hidden', !isOpen);
+    openMenuButton.setAttribute('aria-expanded', isOpen);
+    closeMenuButton.setAttribute('aria-expanded', isOpen);
   }
 
-  window.addEventListener('DOMContentLoaded', function () {
-    const toggleButton = document.getElementById('toggle');
-    toggleButton.addEventListener('click', toggleDarkMode);
+  openMenuButton.addEventListener('click', () => toggleMenu(true));
+  closeMenuButton.addEventListener('click', () => toggleMenu(false));
 
-    // ページロード時にダークモードの状態を確認
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.documentElement.classList.add('dark');
-      toggleButton.setAttribute('aria-checked', 'true');
-      document.getElementById('toggle-icon').textContent = '🌝';
-      document.getElementById('toggle-icon').classList.add('translate-x-5');
-    }
-  });
+  // ページロード時の初期状態
+  toggleMenu(false);
 </script>
