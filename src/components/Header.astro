@@ -1,8 +1,6 @@
 ---
-// Component Scripts
-
-const sectionsData = [
-  {
+const logo = '/src/images/logo.svg';
+const sectionsData = [{
     title: "Portfolio",
     link: "/portfolio",
   },
@@ -17,73 +15,49 @@ const sectionsData = [
     icon: "github",
   },
 ];
+
 ---
 
-<header class="bg-gray-900">
-  <nav
-    class="mx-auto flex max-w-2xl items-center justify-between p-6 lg:px-8"
-    aria-label="Global"
-  >
+<header class="sticky top-0 z-10 bg-white bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg">
+  <nav class="mx-auto flex max-w-2xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="/" class="-m-1.5 p-1.5">
-        <span class="sr-only">Koki Miyakubo</span>
-        <img
-          class="h-8 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-          alt=""
-        />
+      <a href="/" class="-m-1.5 p-1.5 flex gap-2 items-center">
+        <img class="h-8 w-auto" src={logo} alt="" />
+        <span class="font-semibold text-md text-background-dark dark:text-background-light">Koki Miyakubo</span>
       </a>
     </div>
     <div class="flex lg:hidden">
-      <button
-        type="button"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-      >
+      <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400">
         <span class="sr-only">メニューを開く</span>
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
         </svg>
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
       {
-        sectionsData.map((data) => (
-          <a
-            href={data.link}
-            class="text-sm font-semibold leading-6 text-white"
-            target={data.blank ? "_blank" : ""}
-          >
-            {data.title}
-          </a>
-        ))
+      sectionsData.map((data) => (
+      <a href={data.link} class="text-sm font-semibold leading-6 text-background-dark dark:text-background-light" target={data.blank ? "_blank" : "" }>
+        {data.title}
+      </a>
+      ))
       }
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
       <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
       <!-- TODO: color mode change js logics -->
-      <button
-        type="button"
+
+      <button id="toggle" type="button"
         class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
-        role="switch"
-        aria-checked="false"
-      >
-        <span class="sr-only">Use setting</span>
-        <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-        <span
-          aria-hidden="true"
-          class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
-        ></span>
+        role="switch" aria-checked="false">
+        <span class="sr-only">カラーモードk切り替え</span>
+        <span aria-hidden="true" id="toggle-icon"
+          class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out flex items-center justify-center">
+          🌞
+        </span>
       </button>
+
     </div>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
@@ -91,31 +65,17 @@ const sectionsData = [
     <!-- Background backdrop, show/hide based on slide-over state. -->
     <div class="fixed inset-0 z-10"></div>
     <div
-      class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
-    >
+      class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
       <div class="flex items-center justify-between">
         <a href="/" class="-m-1.5 p-1.5">
-          <span class="sr-only">Koki Miyakubo</span>
-          <img
-            class="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-            alt=""
-          />
+          <span class="font-semibold text-md text-background-dark dark:text-background-light">Koki Miyakubo</span>
+          <img class="h-8 w-auto" src={logo} alt="" />
         </a>
         <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-400">
           <span class="sr-only">Close menu</span>
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"></path>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
@@ -123,15 +83,13 @@ const sectionsData = [
         <div class="-my-6 divide-y divide-gray-500/25">
           <div class="space-y-2 py-6">
             {
-              sectionsData.map((data) => (
-                <a
-                  href={data.link}
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-                  target={data.blank ? "_blank" : ""}
-                >
-                  {data.title}
-                </a>
-              ))
+            sectionsData.map((data) => (
+            <a href={data.link}
+              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-background-dark dark:text-background-light hover:bg-gray-800"
+              target={data.blank ? "_blank" : "" }>
+              {data.title}
+            </a>
+            ))
             }
           </div>
         </div>
@@ -139,3 +97,33 @@ const sectionsData = [
     </div>
   </div>
 </header>
+
+<script type="module">
+  function toggleDarkMode() {
+    const toggle = document.getElementById('toggle');
+    const icon = document.getElementById('toggle-icon');
+    const isToggled = toggle.getAttribute('aria-checked') === 'true';
+    toggle.setAttribute('aria-checked', !isToggled);
+    icon.textContent = isToggled ? '🌞' : '🌝';
+    icon.classList.toggle('translate-x-5', !isToggled);
+    icon.classList.toggle('translate-x-0', isToggled);
+
+    // ダークモードの状態をトグル
+    document.documentElement.classList.toggle('dark');
+    // 状態をローカルストレージに保存
+    localStorage.setItem('darkMode', !isToggled);
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('toggle');
+    toggleButton.addEventListener('click', toggleDarkMode);
+
+    // ページロード時にダークモードの状態を確認
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.documentElement.classList.add('dark');
+      toggleButton.setAttribute('aria-checked', 'true');
+      document.getElementById('toggle-icon').textContent = '🌝';
+      document.getElementById('toggle-icon').classList.add('translate-x-5');
+    }
+  });
+</script>

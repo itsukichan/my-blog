@@ -1,23 +1,11 @@
 ---
-
-const { link, text } = Astro.props;
+const { link, text, color } = Astro.props;
 ---
 
-    <a
-      href={link}
-      class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-      >{text}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-      </svg>
-    </a>
+<a href={link} class={`rounded-md px-4 py-3 text-sm text-background-light font-semibold
+  shadow-sm bg-accent flex items-center justify-center relative`}>{text}
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+    class="w-4 h-4 absolute right-4">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+  </svg>
+</a>

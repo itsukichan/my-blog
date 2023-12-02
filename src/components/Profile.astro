@@ -5,17 +5,18 @@ import Text from './Text.astro'
 const imgPath = '/src/images/img-avatar.png'
 ---
 
-<div class="flex -mt-10">
-  <div>
-    <h1 class="text-2xl font-bold">Koki Miyakubo</h1>
-    <p class="text-sm font-semibold text-gray-500">Frontend Engineer</p>
+<div class="grid grid-cols-4 -mt-8 bg-opacity-25 backdrop-blur-lg p-4 rounded-lg shadow-lg">
+  <div class="col-span-3">
+    <h1 class="text-2xl font-bold text-background-dark dark:text-background-light">Koki Miyakubo</h1>
+    <p class="text-sm font-semibold text-background-dark dark:text-background-light">Frontend Engineer</p>
     <Text />
-    <div class="grid lg:grid-cols-2 mt-6">
-      <Button link="/portfolio" text="My Portfoiio" />
-      <Button link="/blog" text="My Blog" />
-    </div>
   </div>
-  <div class="ml-4 flex-shrink-0">
+  <div class="col-span-1 -mt-12">
     <Avatar imgSrc={imgPath} />
   </div>
+  <div class="grid grid-cols-2 gap-4 col-span-4 mt-6 justify-center">
+    <Button link="/portfolio" text="My Portfoiio" color="accent" />
+    <Button link="/blog" text="My Blog" color="secondary-accent" />
+  </div>
+
 </div>
