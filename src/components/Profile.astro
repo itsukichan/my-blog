@@ -1,25 +1,31 @@
 ---
-import Button from './Button.astro'
-import Avatar from './Avatar.astro'
-import Text from './Text.astro'
-const imgPath = '/src/images/img-avatar.png'
+import Button from "./Button.astro";
+import Avatar from "./Avatar.astro";
+import Text from "./Text.astro";
+import avatar from "../images/img-avatar.png";
 
 const profileDetails = {
-  name: 'Koki Miyakubo',
-  job: 'Frontend Engineer',
-  text: 'I am a front-end engineer living in Tokyo. Currently working mainly on web production as an SES.',
-  avatar: '/src/images/img-avatar.png',
-  portfolioLink: '/portfolio',
-  blogLink: '/blog'
+  name: "Koki Miyakubo",
+  job: "Frontend Engineer",
+  text: "I am a front-end engineer living in Tokyo. Currently working mainly on web production as an SES.",
+  avatar: avatar,
+  portfolioLink: "/portfolio",
+  blogLink: "/blog",
 };
 ---
 
-<section class="grid grid-cols-1 sm:grid-cols-4 -mt-8 bg-opacity-25 backdrop-blur-xl px-4 py-8 rounded-lg shadow-lg">
+<section
+  class="grid grid-cols-1 sm:grid-cols-4 -mt-8 bg-opacity-25 backdrop-blur-xl px-4 py-8 rounded-lg shadow-lg"
+>
   <div class="col-span-1 sm:col-span-3">
-    <h1 class="text-2xl font-bold text-background-dark dark:text-background-light">
+    <h1
+      class="text-2xl font-bold text-background-dark dark:text-background-light"
+    >
       {profileDetails.name}
     </h1>
-    <p class="text-sm font-semibold text-background-dark dark:text-background-light">
+    <p
+      class="text-sm font-semibold text-background-dark dark:text-background-light"
+    >
       {profileDetails.job}
     </p>
     <Text text={profileDetails.text} />
@@ -27,7 +33,9 @@ const profileDetails = {
   <div class="flex justify-center sm:col-span-1 mt-4 sm:-mt-16">
     <Avatar imgSrc={profileDetails.avatar} />
   </div>
-  <div class="grid grid-cols-1 px-24 sm:px-36 gap-4 sm:gap-10 sm:col-span-4 mt-10 justify-center">
+  <div
+    class="grid grid-cols-1 px-24 sm:px-36 gap-4 sm:gap-10 sm:col-span-4 mt-10 justify-center"
+  >
     <!-- <Button link={profileDetails.portfolioLink} text="My Portfoiio" color="accent" /> -->
     <Button link={profileDetails.blogLink} text="My Blog" color="accent" />
   </div>
