@@ -1,107 +1,74 @@
 ---
+const bio = [
+  {
+    company: "Born in Miyazaki Prefecture, Japan",
+    role: "",
+    date: "May 1991",
+  },
+  {
+    company: "Kyushu Designer Gakuin, Kyushu Adachi Gakuen",
+    role: "Diploma in Interior Design",
+    date: "March 2012",
+  },
+  {
+    company: "Construction Management Company",
+    role: "Site Supervisor",
+    date: "March 2012",
+  },
+  {
+    company: "Japan Ground Self-Defense Force",
+    role: "Self-Defense Official, Rank: Sergeant",
+    date: "March 2013",
+  },
+  {
+    company: "SES (System Engineering Service)",
+    role: "Front-End Engineer",
+    date: "April 2015",
+  },
+  {
+    company: "SES (System Engineering Service)",
+    role: "Front-End Engineer",
+    date: "January 2018",
+  },
+];
 ---
 
 <div class="mt-8 flow-root">
   <ul role="list" class="-mb-8">
-    <li>
-      <div class="relative pb-10">
-        <span class="absolute left-2 top-4 -ml-px h-full w-0.5 bg-support" aria-hidden="true"></span>
-        <div class="relative flex space-x-3">
-          <div>
-            <span class="h-4 w-4 rounded-full flex items-center justify-center ring-4 ring-secondary-accent bg-background-light"></span>
-          </div>
-          <div class="flex min-w-0 flex-1 justify-between space-x-4">
-            <div>
-              <p class="text-sm text-background-dark dark:text-background-light">
-                Applied to <a href="#" class="font-medium text-gray-900">Front End Developer</a>
-              </p>
-            </div>
-            <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
-              <time datetime="2020-09-20">Sep 20</time>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="relative pb-10">
-        <span class="absolute left-2 top-4 -ml-px h-full w-0.5 bg-support" aria-hidden="true"></span>
-        <div class="relative flex space-x-3">
-          <div>
-            <span class="h-4 w-4 rounded-full flex items-center justify-center ring-4 ring-secondary-accent bg-background-light"></span>
-          </div>
-          <div class="flex min-w-0 flex-1 justify-between space-x-4">
-            <div>
-              <p class="text-sm text-background-dark dark:text-background-light">
-                Applied to <a href="#" class="font-medium text-gray-900">Front End Developer</a>
-              </p>
-            </div>
-            <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
-              <time datetime="2020-09-20">Sep 20</time>
+    {
+      bio.map((data, index) => (
+        <li>
+          <div class="relative pb-10">
+            {index !== bio.length - 1 && (
+              <span
+                class="absolute left-1 top-2 -ml-px h-full w-0.5 bg-support"
+                aria-hidden="true"
+              />
+            )}
+            <div class="relative flex space-x-3">
+              <div>
+                <span class="h-2 w-2 rounded-full flex items-center justify-center ring-4 ring-secondary-accent bg-background-light" />
+              </div>
+              <div class="flex min-w-0 flex-1 justify-between space-x-4">
+                <div class="-mt-1.5">
+                  <p class="text-sm text-background-dark dark:text-background-light">
+                    {data.company}{" "}
+                    {index === bio.length - 1 && (
+                      <span class="font-semibold"> - Present</span>
+                    )}
+                    <span class="flex font-semibold text-xs sm:text-sm">
+                      {data.role}
+                    </span>
+                  </p>
+                </div>
+                <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
+                  <time datetime={new Date(data.date)}>{data.date}</time>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="relative pb-10">
-        <span class="absolute left-2 top-4 -ml-px h-full w-0.5 bg-support" aria-hidden="true"></span>
-        <div class="relative flex space-x-3">
-          <div>
-            <span class="h-4 w-4 rounded-full flex items-center justify-center ring-4 ring-secondary-accent bg-background-light"></span>
-          </div>
-          <div class="flex min-w-0 flex-1 justify-between space-x-4">
-            <div>
-              <p class="text-sm text-background-dark dark:text-background-light">
-                Applied to <a href="#" class="font-medium text-gray-900">Front End Developer</a>
-              </p>
-            </div>
-            <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
-              <time datetime="2020-09-20">Sep 20</time>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="relative pb-10">
-        <span class="absolute left-2 top-4 -ml-px h-full w-0.5 bg-support" aria-hidden="true"></span>
-        <div class="relative flex space-x-3">
-          <div>
-            <span class="h-4 w-4 rounded-full flex items-center justify-center ring-4 ring-secondary-accent bg-background-light"></span>
-          </div>
-          <div class="flex min-w-0 flex-1 justify-between space-x-4">
-            <div>
-              <p class="text-sm text-background-dark dark:text-background-light">
-                Applied to <a href="#" class="font-medium text-gray-900">Front End Developer</a>
-              </p>
-            </div>
-            <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
-              <time datetime="2020-09-20">Sep 20</time>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="relative pb-10">
-        <div class="relative flex space-x-3">
-          <div>
-            <span class="h-4 w-4 rounded-full flex items-center justify-center ring-4 ring-secondary-accent bg-background-light"></span>
-          </div>
-          <div class="flex min-w-0 flex-1 justify-between space-x-4">
-            <div>
-              <p class="text-sm text-background-dark dark:text-background-light">
-                Completed interview with <a href="#" class="font-medium text-gray-900">Katherine Snyder</a>
-              </p>
-            </div>
-            <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
-              <time datetime="2020-10-04">Oct 4</time>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-
+        </li>
+      ))
+    }
   </ul>
 </div>
