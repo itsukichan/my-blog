@@ -2,8 +2,8 @@
 const { imgSrc } = Astro.props;
 ---
 
-<img
-  class="w-32 h-32 rounded-full flex sm:ml-auto"
-  src={imgSrc}
-  alt="Profile picture"
-/>
+<div
+  class="w-32 h-32 rounded-full flex sm:ml-auto overflow-hidden border-4 border-background-light"
+>
+  <img src={imgSrc} alt="Profile picture" />
+</div>
