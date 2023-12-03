@@ -1,0 +1,79 @@
+/* blog 記事ページのスタイル microCMSのコンテンツの部分 */
+#blog-content {
+  @apply space-y-4; /* コンテンツ間の余白とテーブルのスクロール */
+}
+
+/* 見出し要素のマージン調整 */
+#blog-content h1 {
+  @apply text-5xl font-bold mt-10 mb-6;
+}
+#blog-content h2 {
+  @apply text-4xl font-bold mt-9 mb-5;
+}
+#blog-content h3 {
+  @apply text-3xl font-bold mt-8 mb-4;
+}
+#blog-content h4 {
+  @apply text-2xl font-bold mt-7 mb-3;
+}
+#blog-content h5 {
+  @apply text-xl font-bold mt-6 mb-2;
+}
+
+#blog-content p {
+  @apply text-lg leading-relaxed;
+}
+#blog-content a {
+  @apply text-accent hover:text-accent underline;
+}
+
+#blog-content ul,
+ol {
+  @apply pl-8 list-inside;
+}
+#blog-content ul {
+  @apply list-disc pl-4;
+}
+#blog-content ol {
+  @apply list-decimal pl-4;
+}
+#blog-content li {
+  @apply mb-2;
+}
+#blog-content img {
+  @apply my-4 max-w-full h-auto;
+}
+
+#blog-content blockquote {
+  @apply border-l-4 border-secondary-accent pl-4 italic text-lg;
+}
+#blog-content strong {
+  @apply font-semibold;
+}
+#blog-content pre {
+  @apply bg-background-dark p-4 rounded-lg overflow-x-auto text-background-light dark:text-background-dark dark:bg-background-light;
+}
+#blog-content code {
+  @apply bg-background-dark px-1 py-0.5 rounded text-background-light dark:text-background-dark dark:bg-background-light;
+}
+
+/* TODO:テーブルのスタイル
+        テーブルについてスマホの横スクロールがコンテンツ全体に影響してしまうので、
+        テーブルのみ横スクロールできるようにしたい
+*/
+#blog-content table {
+  @apply min-w-full;
+}
+#blog-content th,
+td {
+  @apply border-b bg-background-light px-4 py-2;
+}
+#blog-content th {
+  @apply bg-support text-background-light dark:text-background-dark dark:bg-support;
+}
+#blog-content p + p {
+  @apply mt-4;
+}
+#blog-content em {
+  @apply italic;
+}
