@@ -1,9 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import mainvisual from "../images/img-mainvisual.jpg";
 ---
-
-<img
-  class="w-full h-80 object-cover object-center rounded"
-  alt="hero"
-  src={mainvisual}
-/>
+<Image class="w-full h-80 object-cover object-center rounded" src={mainvisual} alt="hero" />

@@ -1,10 +1,14 @@
 ---
+import { Image } from 'astro:assets'
+
 export interface Props {
   title: string;
   tag: string;
   href: string;
   updatedAt: string;
-  keyVisual: string;
+  keyVisual: {
+    url: string;
+  };
 }
 
 const { title, tag, href, updatedAt, keyVisual } = Astro.props;
@@ -18,9 +22,8 @@ const formattedDate = `${year}-${month}-${day}`;
 
 <article class="flex flex-col items-start justify-between">
   <div class="relative w-full">
-    <img
-      src={keyVisual.url}
-      alt="" class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[2/1] sm:aspect-[3/2]">
+    <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src={keyVisual.url}
+      width={272} height={181} alt="" />
   </div>
   <div class="max-w-xl">
     <div class="mt-6 flex items-center gap-x-4 text-xs">
