@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets'
 
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
@@ -15,63 +14,11 @@ import Text from "../../components/Text.astro";
         <Text text='I will be sharing insights on programming and design in my articles.' />
 
       <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
-        <article class="flex flex-col items-start justify-between">
-          <div class="relative w-full">
-            <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src="/"
-              width={272} height={181} alt="" />
-          </div>
-          <div class="max-w-xl">
-            <div class="mt-6 flex items-center gap-x-4 text-xs">
-              <time datetime="2020-03-16" class="text-background-dark dark:text-background-light">YYYY-MM-DD</time>
-            </div>
-            <div class="group relative">
-              <h3 class="mt-3 text-lg font-semibold leading-6 text-background-dark dark:text-background-light">
-                <a href="/">
-                  <span class="absolute inset-0"></span>
-                  Lorem ipsum
-                </a>
-              </h3>
-            </div>
-          </div>
-        </article>
-        <article class="flex flex-col items-start justify-between">
-          <div class="relative w-full">
-            <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src="/"
-              width={272} height={181} alt="" />
-          </div>
-          <div class="max-w-xl">
-            <div class="mt-6 flex items-center gap-x-4 text-xs">
-              <time datetime="2020-03-16" class="text-background-dark dark:text-background-light">YYYY-MM-DD</time>
-            </div>
-            <div class="group relative">
-              <h3 class="mt-3 text-lg font-semibold leading-6 text-background-dark dark:text-background-light">
-                <a href="/">
-                  <span class="absolute inset-0"></span>
-                  Lorem ipsum
-                </a>
-              </h3>
-            </div>
-          </div>
-        </article>
-        <article class="flex flex-col items-start justify-between">
-          <div class="relative w-full">
-            <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src="/"
-              width={272} height={181} alt="" />
-          </div>
-          <div class="max-w-xl">
-            <div class="mt-6 flex items-center gap-x-4 text-xs">
-              <time datetime="2020-03-16" class="text-background-dark dark:text-background-light">YYYY-MM-DD</time>
-            </div>
-            <div class="group relative">
-              <h3 class="mt-3 text-lg font-semibold leading-6 text-background-dark dark:text-background-light">
-                <a href="/">
-                  <span class="absolute inset-0"></span>
-                  Lorem ipsum
-                </a>
-              </h3>
-            </div>
-          </div>
-        </article>
+        <ul>
+          <li class="text-background-light"><a href="/portfolio/portfolio-1/">記事1</a></li>
+          <li class="text-background-light"><a href="/portfolio/portfolio-2/">記事2</a></li>
+          <li class="text-background-light"><a href="/portfolio/portfolio-3/">記事3</a></li>
+        </ul>
       </div>
     </section>
   </main>
