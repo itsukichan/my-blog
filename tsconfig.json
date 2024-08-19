@@ -1,6 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
+
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@images/*": ["src/images/*"],
+      "@libs/*": ["src/libs/*"]
+    },
     // "importsNotUsedAsValues": "error"
     "strictNullChecks": true,
     "allowJs": true

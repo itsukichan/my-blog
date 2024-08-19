@@ -1,10 +1,10 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { getBlogs } from "../../libs/microcms";
-import Card from "../../components/Card.astro";
-import Text from "../../components/Text.astro";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import { getBlogs } from "@libs/microcms";
+import Card from "@components/Card.astro";
+import Text from "@components/Text.astro";
 
 const response = await getBlogs({ fields: ["id", "title", "tag", "updatedAt", "keyVisual"] });
 ---

@@ -2,6 +2,7 @@
 export interface Props {
   title: string;
 }
+import { ViewTransitions } from 'astro:transitions';
 
 const { title } = Astro.props;
 ---
@@ -25,6 +26,7 @@ const { title } = Astro.props;
     <!-- noindex -->
     <meta name="robots" content="noindex" />
     <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+    <ViewTransitions />
   </head>
   <body
     class="relative min-h-screen bg-background-light dark:bg-dark-background-light"
