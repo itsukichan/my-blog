@@ -2,16 +2,15 @@
 import { Image } from 'astro:assets'
 
 export interface Props {
-  title: string;
-  tag: string;
-  href: string;
-  updatedAt: string;
-  keyVisual: {
-    url: string;
-  };
+title: string;
+href: string;
+updatedAt: string;
+keyVisual: {
+url: string;
+};
 }
 
-const { title, tag, href, updatedAt, keyVisual } = Astro.props;
+const { title, href, updatedAt, keyVisual } = Astro.props;
 
 const date = new Date(updatedAt);
 const year = date.getFullYear();
@@ -20,23 +19,19 @@ const day = String(date.getDate()).padStart(2, '0');
 const formattedDate = `${year}-${month}-${day}`;
 ---
 
-<article class="flex flex-col items-start justify-between">
+<a href={href} class="grid grid-rows-subgrid gap-y-4 row-span-2">
   <div class="relative w-full">
-    <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src={keyVisual.url}
-      width={272} height={181} alt="" />
+    <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src={keyVisual.url} width={272}
+      height={181} alt="" />
   </div>
   <div class="max-w-xl">
-    <div class="mt-6 flex items-center gap-x-4 text-xs">
-      <time datetime="2020-03-16" class="text-background-dark dark:text-background-light">{formattedDate}</time>
-      <!-- <span class="text-background-dark dark:text-background-light bg-accent p-1">{tag}</span> -->
+    <div class="flex items-center gap-x-4 text-xs">
+      <time datetime={updatedAt} class="text-background-dark dark:text-background-light">{formattedDate}</time>
     </div>
     <div class="group relative">
       <h3 class="mt-3 text-lg font-semibold leading-6 text-background-dark dark:text-background-light">
-        <a href={href}>
-          <span class="absolute inset-0"></span>
-          {title}
-        </a>
+        {title}
       </h3>
     </div>
   </div>
-</article>
+</a>

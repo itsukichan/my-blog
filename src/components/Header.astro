@@ -19,8 +19,6 @@ const sectionsData = [
 ];
 ---
 
-<!-- <header class="sticky top-0 z-10 bg-white bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg">
-  <nav class="mx-auto flex max-w-2xl items-center justify-between p-6 sm:px-8" aria-label="Global"> -->
 <header
   class="sticky top-0 z-10 bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg"
 >
@@ -105,9 +103,7 @@ const sectionsData = [
   <!-- Mobile menu, show/hide based on menu open state. -->
   <div
     id="mobile-menu"
-    class="hidden sm:hidden"
-    role="dialog"
-    aria-modal="true"
+    class="sm:hidden fixed inset-0 z-20 transform transition-transform duration-300 ease-in-out translate-x-full"
   >
     <!-- Background backdrop, show/hide based on slide-over state. -->
     <div class="fixed inset-0 z-20"></div>
@@ -192,20 +188,32 @@ const sectionsData = [
   </div>
 </header>
 
-<script type="module">
-  const openMenuButton = document.getElementById("open-menu");
-  const closeMenuButton = document.getElementById("close-menu");
-  const mobileMenu = document.getElementById("mobile-menu");
+<script>
+  // メニューの制御をクライアントサイドでのみ実行
+  function setupMobileMenu() {
+    const openMenuButton = document.getElementById("open-menu");
+    const closeMenuButton = document.getElementById("close-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-  function toggleMenu(isOpen) {
-    mobileMenu.classList.toggle("hidden", !isOpen);
-    openMenuButton.setAttribute("aria-expanded", isOpen);
-    closeMenuButton.setAttribute("aria-expanded", isOpen);
+    if (!openMenuButton || !closeMenuButton || !mobileMenu) return;
+
+    function toggleMenu(isOpen) {
+      mobileMenu.classList.toggle("translate-x-full", !isOpen);
+      mobileMenu.classList.toggle("translate-x-0", isOpen);
+      openMenuButton.setAttribute("aria-expanded", isOpen.toString());
+      closeMenuButton.setAttribute("aria-expanded", isOpen.toString());
+    }
+
+    openMenuButton.addEventListener("click", () => toggleMenu(true));
+    closeMenuButton.addEventListener("click", () => toggleMenu(false));
+
+    // ページロード時の初期状態
+    toggleMenu(false);
   }
 
-  openMenuButton.addEventListener("click", () => toggleMenu(true));
-  closeMenuButton.addEventListener("click", () => toggleMenu(false));
+  // DOMContentLoadedイベントでセットアップを実行
+  document.addEventListener('DOMContentLoaded', setupMobileMenu);
 
-  // ページロード時の初期状態
-  toggleMenu(false);
+  // Astroの View Transitions のサポート
+  document.addEventListener('astro:page-load', setupMobileMenu);
 </script>
