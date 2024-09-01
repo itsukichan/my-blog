@@ -1,76 +1,56 @@
 ---
 ---
 
-<button
-  id="toggle"
-  type="button"
-  class="bg-accent dark:bg-secondary-accent relative flex justify-center items-center h-8 w-8 cursor-pointer rounded-md transition-colors duration-200 ease-in-out mr-4 sm:mr-6 ml-auto"
->
+<button id="toggle" type="button"
+  class="bg-accent dark:bg-secondary-accent relative flex justify-center items-center h-8 w-8 cursor-pointer rounded-md transition-colors duration-200 ease-in-out mr-4 sm:mr-6 ml-auto">
   <span class="sr-only">change color theme</span>
-  <span
-    aria-hidden="true"
-    id="toggle-icon"
-    class="translate-x-0 pointer-events-none h-5 w-5 transform rounded-full shadow transition duration-200 ease-in-out flex items-center justify-center"
-  >
+  <span aria-hidden="true" id="toggle-icon"
+    class="translate-x-0 pointer-events-none h-5 w-5 transform rounded-full shadow transition duration-200 ease-in-out flex items-center justify-center">
     <!-- ライトモード用のアイコン（デフォルト） -->
-    <svg
-      id="icon-light"
-      viewBox="0 0 24 24"
-      focusable="false"
-      class="h-6 w-6 text-background-light"
-      aria-hidden="true"
-    >
-      <path
-        fill="currentColor"
-        d="M21.4,13.7C20.6,13.9,19.8,14,19,14c-5,0-9-4-9-9c0-0.8,0.1-1.6,0.3-2.4c0.1-0.3,0-0.7-0.3-1 c-0.3-0.3-0.6-0.4-1-0.3C4.3,2.7,1,7.1,1,12c0,6.1,4.9,11,11,11c4.9,0,9.3-3.3,10.6-8.1c0.1-0.3,0-0.7-0.3-1 C22.1,13.7,21.7,13.6,21.4,13.7z"
-      ></path>
+    <svg id="icon-light" viewBox="0 0 24 24" focusable="false" class="h-6 w-6 text-background-light" aria-hidden="true">
+      <path fill="currentColor"
+        d="M21.4,13.7C20.6,13.9,19.8,14,19,14c-5,0-9-4-9-9c0-0.8,0.1-1.6,0.3-2.4c0.1-0.3,0-0.7-0.3-1 c-0.3-0.3-0.6-0.4-1-0.3C4.3,2.7,1,7.1,1,12c0,6.1,4.9,11,11,11c4.9,0,9.3-3.3,10.6-8.1c0.1-0.3,0-0.7-0.3-1 C22.1,13.7,21.7,13.6,21.4,13.7z">
+      </path>
     </svg>
     <!-- ダークモード用のアイコン（非表示） -->
-    <svg
-      id="icon-dark"
-      viewBox="0 0 24 24"
-      focusable="false"
-      class="h-6 w-6 hidden text-background-dark"
-      aria-hidden="true"
-    >
-      <g
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-width="2"
-        fill="currentColor"
-        stroke="currentColor"
-      >
-        <circle cx="12" cy="12" r="5"></circle><path d="M12 1v2"></path><path
-          d="M12 21v2"></path><path d="M4.22 4.22l1.42 1.42"></path><path
-          d="M18.36 18.36l1.42 1.42"></path><path d="M1 12h2"></path><path
-          d="M21 12h2"></path><path d="M4.22 19.78l1.42-1.42"></path><path
-          d="M18.36 5.64l1.42-1.42"></path>
+    <svg id="icon-dark" viewBox="0 0 24 24" focusable="false" class="h-6 w-6 hidden text-background-dark"
+      aria-hidden="true">
+      <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="currentColor" stroke="currentColor">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2"></path>
+        <path d="M12 21v2"></path>
+        <path d="M4.22 4.22l1.42 1.42"></path>
+        <path d="M18.36 18.36l1.42 1.42"></path>
+        <path d="M1 12h2"></path>
+        <path d="M21 12h2"></path>
+        <path d="M4.22 19.78l1.42-1.42"></path>
+        <path d="M18.36 5.64l1.42-1.42"></path>
       </g>
     </svg>
   </span>
 </button>
 
-<script type="module">
-  const toggleButton = document.getElementById("toggle");
-  const iconLight = document.getElementById("icon-light");
-  const iconDark = document.getElementById("icon-dark");
+<script>
+  function setupThemeToggle() {
+    const toggleButton = document.getElementById("toggle");
+    const iconLight = document.getElementById("icon-light");
+    const iconDark = document.getElementById("icon-dark");
 
-  function toggleDarkMode() {
-    const isDarkMode = document.documentElement.classList.toggle("dark");
-    toggleButton.setAttribute("aria-checked", isDarkMode);
+    function toggleDarkMode() {
+      const isDarkMode = document.documentElement.classList.toggle("dark");
+      toggleButton.setAttribute("aria-checked", isDarkMode);
 
-    if (isDarkMode) {
-      iconLight.classList.add("hidden");
-      iconDark.classList.remove("hidden");
-    } else {
-      iconLight.classList.remove("hidden");
-      iconDark.classList.add("hidden");
+      if (isDarkMode) {
+        iconLight.classList.add("hidden");
+        iconDark.classList.remove("hidden");
+      } else {
+        iconLight.classList.remove("hidden");
+        iconDark.classList.add("hidden");
+      }
+
+      localStorage.setItem("darkMode", isDarkMode);
     }
 
-    localStorage.setItem("darkMode", isDarkMode);
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     if (savedDarkMode) {
       document.documentElement.classList.add("dark");
@@ -80,5 +60,10 @@
     }
 
     toggleButton.addEventListener("click", toggleDarkMode);
-  });
+  }
+  // Initial setup
+  setupThemeToggle();
+
+  // Re-run setup on Astro page changes
+  document.addEventListener('astro:after-swap', setupThemeToggle);
 </script>

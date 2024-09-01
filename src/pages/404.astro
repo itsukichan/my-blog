@@ -1,38 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
+import Text from "@components/Text.astro";
+import Heading from "@components/Heading.astro";
+import Section from "@components/Section.astro";
 ---
 
 <Layout title="Koki Miyakubo - Homepage">
-  <Header />
-  <main class="mx-auto max-w-2xl px-6 sm:px-8">
-    <section
-      class="mt-16 bg-opacity-25 backdrop-blur-xl p-4 rounded-lg shadow-lg"
-    >
-      <p
-        class="text-base font-semibold leading-8 text-background-dark dark:text-background-light"
-      >
-        404
-      </p>
-      <h1
-        class="mt-4 text-3xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-5xl"
-      >
-        Page not found
-      </h1>
-      <p
-        class="mt-6 text-base leading-7 text-background-dark dark:text-background-light"
-      >
-        Sorry, we couldn’t find the page you’re looking for.
-      </p>
-      <div class="mt-10">
-        <a
-          href="/"
-          class="text-sm font-semibold leading-7 text-background-dark dark:text-background-light"
-          ><span aria-hidden="true">&larr;</span> Back to home</a
-        >
-      </div>
-    </section>
-  </main>
-  <Footer />
+  <Section>
+    <Heading title="404" />
+    <Text text="Sorry, we couldn’t find the page you’re looking for." />
+    <div class="mt-10">
+      <a href="/" class="text-sm font-semibold leading-7 text-background-dark dark:text-background-light"><span
+          aria-hidden="true">&larr;</span> Back to home</a>
+    </div>
+  </Section>
+
 </Layout>

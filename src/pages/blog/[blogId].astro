@@ -1,7 +1,5 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
 import { getBlogDetail, getBlogs } from "@libs/microcms";
 
 import "../../styles/blog.css";
@@ -18,8 +16,6 @@ const blog = await getBlogDetail(blogId as string);
 ---
 
 <Layout title={`${blog.title} - Koki Miyakubo - Homepage`}>
-  <Header />
-  <main class="mx-auto max-w-2xl px-6 sm:px-8">
     <section class="bg-opacity-25">
       <img src={blog.keyVisual.url} alt="" />
       <h1
@@ -62,6 +58,4 @@ const blog = await getBlogDetail(blogId as string);
         set:html={blog.content}
       />
     </section>
-  </main>
-  <Footer />
 </Layout>

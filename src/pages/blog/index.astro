@@ -1,30 +1,25 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
 import { getBlogs } from "@libs/microcms";
 import Card from "@components/Card.astro";
 import Text from "@components/Text.astro";
+import Heading from "@components/Heading.astro";
+import Section from "@components/Section.astro";
 
 const response = await getBlogs({ fields: ["id", "title", "tag", "updatedAt", "keyVisual"] });
 ---
 
 <Layout title="Blog - Koki Miyakubo - Homepage">
-  <Header />
-  <main class="mx-auto max-w-2xl px-6 sm:px-8">
-    <section class="mt-16 bg-white bg-opacity-25 backdrop-blur-xl p-4 rounded-lg shadow-lg">
-      <h2 class="text-3xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl">From
-        the blog</h2>
-      <Text text='I will be sharing insights on programming and design in my articles.' />
-      </div>
-      <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
-        {
-        response.contents.map((blog: any) => (
-        <Card title={blog.title} tag={blog.tag} href={`/blog/${blog.id}`} keyVisual={blog.keyVisual}
-          updatedAt={blog.updatedAt} />
-        ))
-        }
-    </section>
-  </main>
-  <Footer />
+  <Section>
+    <Heading title="From the blog" />
+    <Text text='I will be sharing insights on programming and design in my articles.' />
+    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
+      {
+      response.contents.map((blog: any) => (
+      <Card title={blog.title} tag={blog.tag} href={`/blog/${blog.id}`} keyVisual={blog.keyVisual}
+        updatedAt={blog.updatedAt} />
+      ))
+      }
+    </div>
+  </Section>
 </Layout>
