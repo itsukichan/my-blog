@@ -1,0 +1,3 @@
+:where(button, [type="button"], [type="reset"], [type="submit"]) {
+  touch-action: manipulation;
+}
