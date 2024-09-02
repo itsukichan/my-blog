@@ -12,14 +12,23 @@ module.exports = {
       xl: "1200px",
     },
     colors: {
-      "background-light": "#E9E9E9", // ライトモードの背景色
-      "background-dark": "#0E0E0E", // ダークモードの背景色
-      accent: "#46397B", // 強調色
-      "secondary-accent": "#68DBB5", // 強調色のバリエーション
-      support: "#949899", // 補助色
+      "background-light": "#FFFFFF", // ライトモードの背景色
+      "background-dark": "#121212", // ダークモードの背景色
+      accent: {
+        DEFAULT: "#6A1B9A", // ライトモードの強調色 (紫)
+        dark: "#AB47BC", // ダークモードの強調色 (明るい紫)
+      },
+      "secondary-accent": {
+        DEFAULT: "#2E7D32", // ライトモードの強調色のバリエーション (緑)
+        dark: "#66BB6A", // ダークモードの強調色のバリエーション (明るい緑)
+      },
+      support: {
+        DEFAULT: "#7A7D7E", // ライトモードの補助色
+        dark: "#B0BEC5", // ダークモードの補助色
+      },
       dark: {
-        "background-light": "#0E0E0E", // ダークモードでのライト背景色
-        "background-dark": "#E9E9E9", // ダークモードでのダーク背景色
+        "background-light": "#121212", // ダークモードでのライト背景色
+        "background-dark": "#FFFFFF", // ダークモードでのダーク背景色
       },
     },
     fontFamily: {

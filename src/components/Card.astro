@@ -22,7 +22,7 @@ const formattedDate = `${year}-${month}-${day}`;
 <a href={href} class="grid grid-rows-subgrid gap-y-4 row-span-2">
   <div class="relative w-full">
     <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src={keyVisual.url} width={272}
-      height={181} alt="" />
+      height={181} alt={title} loading="eager" format="webp" />
   </div>
   <div class="max-w-xl">
     <div class="flex items-center gap-x-4 text-xs">

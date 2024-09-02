@@ -1,5 +1,8 @@
 ---
 import { Image } from 'astro:assets'
+
 import mainvisual from "@images/img-mainvisual.jpg";
 ---
-<Image class="w-full aspect-video object-cover object-center rounded" src={mainvisual} loading="eager" alt="hero" />
+
+<Image class="w-full h-full aspect-video object-cover object-center" src={mainvisual} loading="eager" alt="hero" width="1920" height="1080" format="webp" />
+

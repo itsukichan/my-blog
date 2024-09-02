@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { getBlogDetail, getBlogs } from "@libs/microcms";
+import { Image } from "astro:assets";
 
 import "../../styles/blog.css";
 
@@ -11,13 +12,14 @@ export async function getStaticPaths() {
   }));
 }
 
+
 const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 ---
 
 <Layout title={`${blog.title} - Koki Miyakubo - Homepage`}>
     <section class="bg-opacity-25">
-      <img src={blog.keyVisual.url} alt="" />
+      <Image src={blog.keyVisual.url} alt={blog.title} width={1000} height={1000} class="w-full h-auto" loading="eager" format="webp" />
       <h1
         class="text-2xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl mt-6 sm:mt-10"
       >
