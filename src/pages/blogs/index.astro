@@ -6,7 +6,7 @@ import Text from "@components/Text.astro";
 import Heading from "@components/Heading.astro";
 import Section from "@components/Section.astro";
 
-const response = await getBlogs({ fields: ["id", "title", "tag", "updatedAt", "keyVisual"] });
+const response = await getBlogs({ fields: ["id", "updatedAt", "title", "keyVisual", "tags" ] });
 ---
 
 <Layout title="Blog - Koki Miyakubo - Homepage">
@@ -16,8 +16,8 @@ const response = await getBlogs({ fields: ["id", "title", "tag", "updatedAt", "k
     <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
       {
       response.contents.map((blog: any) => (
-      <Card title={blog.title} href={`/blog/${blog.id}`} keyVisual={blog.keyVisual}
-        updatedAt={blog.updatedAt} />
+      <Card title={blog.title} href={`/blogs/${blog.id}`} keyVisual={blog.keyVisual}
+        updatedAt={blog.updatedAt} tags={blog.tags} />
       ))
       }
     </div>

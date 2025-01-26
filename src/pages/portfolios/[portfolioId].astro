@@ -1,44 +1,43 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { getBlogDetail, getBlogs } from "@libs/microcms";
+import { getPortfolioDetail, getPortfolios } from "@libs/microcms";
 import { Image } from "astro:assets";
 
-import "../../styles/blog.css";
+import "@styles/cms.css";
 
 export async function getStaticPaths() {
-  const response = await getBlogs({ fields: ["id"] });
-  return response.contents.map((blog: any) => ({
-    params: { blogId: blog.id },
+  const response = await getPortfolios({ fields: ["id"] });
+  return response.contents.map((portfolio: any) => ({
+    params: { portfolioId: portfolio.id },
   }));
 }
 
-
-const { blogId } = Astro.params;
-const blog = await getBlogDetail(blogId as string);
+const { portfolioId } = Astro.params;
+const portfolio = await getPortfolioDetail(portfolioId as string);
 ---
 
-<Layout title={`${blog.title} - Koki Miyakubo - Homepage`}>
+<Layout title={`${portfolio.title} - Koki Miyakubo - Homepage`}>
     <section class="bg-opacity-25">
-      <Image src={blog.keyVisual.url} alt={blog.title} width={1000} height={1000} class="w-full h-auto" loading="eager" format="webp" />
+      <Image src={portfolio.mainvisual.url} alt={portfolio.title} width={1000} height={1000} class="w-full h-auto" loading="eager" format="webp" />
       <h1
         class="text-2xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl mt-6 sm:mt-10"
       >
-        {blog.title}
+        {portfolio.title}
       </h1>
       <div class="mt-4 flex flex-row sm:flex-column flex-wrap gap-1 sm:gap-4">
         <span class="text-background-dark dark:text-background-light">
           PublishedAt: {
-            new Date(blog.publishedAt)
+            new Date(portfolio.publishedAt)
               .toLocaleString()
               .split(" ")[0]
               .replace(/\//g, "-")
           }
         </span>
         {
-          blog.updatedAt && (
+          portfolio.updatedAt && (
             <span class="text-background-dark dark:text-background-light">
               UpdatedAt:{" "}
-              {new Date(blog.updatedAt)
+              {new Date(portfolio.updatedAt)
                 .toLocaleString()
                 .split(" ")[0]
                 .replace(/\//g, "-")}
@@ -46,18 +45,13 @@ const blog = await getBlogDetail(blogId as string);
           )
         }
       </div>
-      <!-- タグが１つでも存在していれば表示、なければ非表示 -->
-      {
-        !blog.tag && (
-          <p class="text-background-dark dark:text-background-light mt-4 sm:mt-4">
-            Tags: {blog.tag}
-          </p>
-        )
-      }
+
+
+
       <div
         id="blog-content"
         class="text-background-dark dark:text-background-light mt-4 sm:mt-6"
-        set:html={blog.content}
+        set:html={portfolio.body}
       />
     </section>
 </Layout>

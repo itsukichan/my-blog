@@ -4,7 +4,7 @@ const sections = Astro.props.sections;
 
 <div class="hidden sm:flex sm:gap-x-6">
   {
-    sections.map((data) => (
+    sections.map((data: any) => (
       <a
         href={data.link}
         class="text-sm font-semibold leading-6 text-background-dark dark:text-background-light flex itemx-center align-center gap-1"

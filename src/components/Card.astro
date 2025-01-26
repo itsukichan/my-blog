@@ -8,9 +8,10 @@ updatedAt: string;
 keyVisual: {
 url: string;
 };
+tags?: string[];
 }
 
-const { title, href, updatedAt, keyVisual } = Astro.props;
+const { title, href, updatedAt, keyVisual, tags } = Astro.props;
 
 const date = new Date(updatedAt);
 const year = date.getFullYear();
@@ -25,13 +26,29 @@ const formattedDate = `${year}-${month}-${day}`;
       height={181} alt={title} loading="eager" format="webp" />
   </div>
   <div class="max-w-xl">
-    <div class="flex items-center gap-x-4 text-xs">
+    <div class="text-xs">
       <time datetime={updatedAt} class="text-background-dark dark:text-background-light">{formattedDate}</time>
     </div>
     <div class="group relative">
       <h3 class="mt-3 text-lg font-semibold leading-6 text-background-dark dark:text-background-light">
         {title}
       </h3>
+      {
+      tags && (
+      <ul class="flex gap-1 flex-wrap mt-2 text-xs">
+        {
+        tags.map((tag: string) => {
+        return (
+        <li
+          class="text-background-dark dark:text-background-light border border-background-dark dark:border-background-light rounded-full px-2 py-1 ">
+          {tag}
+        </li>
+        )
+        }).sort()
+        }
+      </ul>
+      )
+      }
     </div>
   </div>
 </a>
