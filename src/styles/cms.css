@@ -5,16 +5,16 @@
 
 /* 見出し要素のマージン調整 */
 #blog-content h1 {
-  @apply text-5xl font-bold mt-10 mb-6;
+  @apply text-5xl font-bold mt-40 mb-6;
 }
 #blog-content h2 {
-  @apply text-4xl font-bold mt-9 mb-5;
+  @apply text-4xl font-bold mt-20 mb-5;
 }
 #blog-content h3 {
-  @apply text-3xl font-bold mt-8 mb-4;
+  @apply text-3xl font-bold mt-10 mb-4;
 }
 #blog-content h4 {
-  @apply text-2xl font-bold mt-7 mb-3;
+  @apply text-2xl font-bold mt-8 mb-3;
 }
 #blog-content h5 {
   @apply text-xl font-bold mt-6 mb-2;

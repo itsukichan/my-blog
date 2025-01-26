@@ -1,34 +1,34 @@
 ---
-const bio = [
+const bios = [
   {
-    company: "Born in Miyazaki Prefecture, Japan",
+    company: "宮崎県で生まれる",
     role: "",
-    date: "May 1991",
+    date: "1991年5月",
   },
   {
-    company: "Kyushu Designer Gakuin, Kyushu Adachi Gakuen",
-    role: "Diploma in Interior Design",
-    date: "March 2012",
+    company: "九州安達学園 九州デザイナー学院",
+    role: "インテリアデザイン科卒業",
+    date: "2012年3月",
   },
   {
-    company: "Construction Management Company",
-    role: "Site Supervisor",
-    date: "March 2012",
+    company: "建築施工管理会社",
+    role: "現場監督",
+    date: "2012年3月",
   },
   {
-    company: "Japan Ground Self-Defense Force",
-    role: "Self-Defense Official, Rank: Sergeant",
-    date: "March 2013",
+    company: "陸上自衛隊",
+    role: "陸士長 退隊",
+    date: "2013年3月",
   },
   {
-    company: "SES (System Engineering Service)",
-    role: "Front-End Engineer",
-    date: "April 2015",
+    company: "SES",
+    role: "フロントエンジニア",
+    date: "2015年4月",
   },
   {
-    company: "SES (System Engineering Service)",
-    role: "Front-End Engineer",
-    date: "January 2018",
+    company: "SES",
+    role: "フロントエンジニア",
+    date: "2018年1月",
   },
 ];
 ---
@@ -36,10 +36,10 @@ const bio = [
 <div class="mt-8 flow-root">
   <ul role="list" class="-mb-8">
     {
-      bio.map((data, index) => (
+      bios.map((data, index) => (
         <li>
           <div class="relative pb-10">
-            {index !== bio.length - 1 && (
+            {index !== bios.length - 1 && (
               <span
                 class="absolute left-1 top-2 -ml-px h-full w-0.5 bg-support"
                 aria-hidden="true"
@@ -53,8 +53,8 @@ const bio = [
                 <div class="-mt-1.5">
                   <p class="text-sm text-background-dark dark:text-background-light">
                     {data.company}{" "}
-                    {index === bio.length - 1 && (
-                      <span class="font-semibold"> - Present</span>
+                    {index === bios.length - 1 && (
+                      <span class="font-semibold"> - 現在</span>
                     )}
                     <span class="flex font-semibold text-xs sm:text-sm">
                       {data.role}
