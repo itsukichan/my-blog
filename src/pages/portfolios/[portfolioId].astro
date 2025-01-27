@@ -26,7 +26,7 @@ const portfolio = await getPortfolioDetail(portfolioId as string);
       </h1>
       <div class="mt-4 flex flex-row sm:flex-column flex-wrap gap-1 sm:gap-4">
         <span class="text-background-dark dark:text-background-light">
-          PublishedAt: {
+          公開日: {
             new Date(portfolio.publishedAt)
               .toLocaleString()
               .split(" ")[0]
@@ -36,7 +36,7 @@ const portfolio = await getPortfolioDetail(portfolioId as string);
         {
           portfolio.updatedAt && (
             <span class="text-background-dark dark:text-background-light">
-              UpdatedAt:{" "}
+              更新日:{" "}
               {new Date(portfolio.updatedAt)
                 .toLocaleString()
                 .split(" ")[0]
