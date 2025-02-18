@@ -6,7 +6,7 @@ import Text from "@components/Text.astro";
 import Heading from "@components/Heading.astro";
 import Section from "@components/Section.astro";
 
-const response = await getPortfolios({ fields: ["id", "updatedAt", "title", "mainvisual" ] });
+const response = await getPortfolios({ fields: ["id", "updatedAt", "publishedAt", "title", "mainvisual" ] });
 ---
 
 <Layout title="Portfolio - Koki Miyakubo - Homepage">
@@ -16,8 +16,13 @@ const response = await getPortfolios({ fields: ["id", "updatedAt", "title", "mai
     <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
       {
       response.contents.map((portfolio: any) => (
-      <Card title={portfolio.title} href={`/portfolios/${portfolio.id}`} keyVisual={portfolio.mainvisual}
-        updatedAt={portfolio.updatedAt} />
+      <Card
+        title={portfolio.title}
+        href={`/portfolios/${portfolio.id}`}
+        keyVisual={portfolio.mainvisual}
+        publishedAt={portfolio.publishedAt}
+        updatedAt={portfolio.updatedAt}
+      />
       ))
       }
     </div>

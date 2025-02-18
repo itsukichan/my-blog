@@ -22,14 +22,9 @@ const bios = [
   },
   {
     company: "SES",
-    role: "フロントエンジニア",
+    role: "フロントエンドエンジニア",
     date: "2015年4月",
-  },
-  {
-    company: "SES",
-    role: "フロントエンジニア",
-    date: "2018年1月",
-  },
+  }
 ];
 ---
 
@@ -62,7 +57,7 @@ const bios = [
                   </p>
                 </div>
                 <div class="whitespace-nowrap text-right text-sm text-background-dark dark:text-background-light">
-                  <time datetime={new Date(data.date)}>{data.date}</time>
+                  <time datetime={new Date(data.date).toString()}>{data.date}</time>
                 </div>
               </div>
             </div>
