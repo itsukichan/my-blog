@@ -9,10 +9,10 @@ import Section from "@components/Section.astro";
 const response = await getPortfolios({ fields: ["id", "updatedAt", "publishedAt", "title", "mainvisual" ] });
 ---
 
-<Layout title="Portfolio - Koki Miyakubo - Homepage">
+<Layout title="Works - Koki Miyakubo - Homepage">
   <Section>
-    <Heading title="Portfolio" />
-    <Text text='ポートフォリオでは、プライベートで作ったものを公開しています。' />
+    <Heading title="Works" />
+    <Text text='プライベートで作ったものを公開しています。' />
     <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:mx-0 sm:max-w-none sm:grid-cols-2">
       {
       response.contents.map((portfolio: any) => (

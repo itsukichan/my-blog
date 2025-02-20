@@ -9,8 +9,17 @@ const profileDetails = {
   job: "Frontend Engineer",
   text: "都内在住のフロントエンドエンジニアです。現在はSESとして主にWeb制作に携わっています。",
   avatar: avatar,
-  portfolioLink: "/portfolios",
-  blogLink: "/blogs",
+  links: [
+    {
+      title: "Works",
+      link: "/portfolios",
+    },
+    {
+      title: "TechLog",
+      link: "https://techlogwalk.vercel.app",
+      color: "accent",
+    },
+  ],
 };
 ---
 
@@ -36,7 +45,8 @@ const profileDetails = {
   <div
     class="grid grid-cols-2 sm:px-24 gap-4 sm:gap-10 sm:col-span-4 mt-10 justify-center"
   >
-    <Button link={profileDetails.portfolioLink} text="My Portfoiio" color="accent" />
-    <Button link={profileDetails.blogLink} text="My Blog" color="secondary" />
+    {profileDetails.links.map((link) => (
+      <Button link={link.link} text={link.title} color={link.color} />
+    ))}
   </div>
 </section>
