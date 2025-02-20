@@ -9,4 +9,4 @@ A personal portfolio and blog site built with Astro and TailwindCSS.
 - 🌙 Dark mode support
 - 📱 Responsive design
 - 🎨 Clean and minimal UI
-- 📝 Blog powered by microCMS
+- 📝 Portfolio powered by microCMS
