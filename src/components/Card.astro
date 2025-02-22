@@ -14,35 +14,51 @@ interface Props {
 const { title, publishedAt, imageUrl, link, tags } = Astro.props;
 ---
 
-<article class="group relative flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in">
-  <div class="relative h-48 sm:h-64 overflow-hidden">
+<article
+  class="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl
+  transition-all duration-300 animate-fade-in hover:-translate-y-1"
+>
+  <a href={link} class="relative block h-48 sm:h-52 overflow-hidden">
+    <div class="absolute inset-0 bg-gray-900/10 group-hover:bg-gray-900/20 transition-colors z-10"></div>
     <Image
       src={imageUrl}
       alt={title}
-      width={500}
-      height={300}
-      class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+      width={800}
+      height={400}
+      class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
       format="webp"
+      quality={80}
     />
-  </div>
-  <div class="flex flex-1 flex-col justify-between bg-background-light dark:bg-background-dark p-6">
+  </a>
+
+  <div class="flex flex-1 flex-col justify-between p-6 bg-white dark:bg-gray-800">
     <div class="flex-1">
-      <a href={link} class="mt-2 block">
-        <h3 class="text-xl font-semibold text-background-dark dark:text-background-light">
+      <a
+        href={link}
+        class="block group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+      >
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
           {title}
         </h3>
         <time
           datetime={publishedAt}
-          class="block text-sm text-background-dark dark:text-background-light mt-2"
+          class="mt-2 block text-sm text-gray-600 dark:text-gray-400"
         >
           {formatDate(publishedAt)}
         </time>
       </a>
+
       {tags && tags.length > 0 && (
-        <ul class="mt-4 flex flex-wrap gap-2">
+        <ul class="mt-4 flex flex-wrap gap-2" aria-label="タグ">
           {tags.map(tag => <Tag text={tag} />)}
         </ul>
       )}
     </div>
+  </div>
+
+  <div
+    class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary-500 to-secondary-500
+    transition-all duration-300 group-hover:w-full"
+  >
   </div>
 </article>
