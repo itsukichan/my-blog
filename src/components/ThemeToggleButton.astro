@@ -1,14 +1,14 @@
 <button id="toggle" type="button"
-  class="bg-accent dark:bg-secondary-accent relative flex justify-center items-center h-8 w-14 cursor-pointer rounded-full transition-colors duration-200 ease-in-out mr-4 sm:mr-6 ml-auto">
+  class="relative flex h-8 w-14 cursor-pointer items-center justify-center rounded-full bg-secondary-accent shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl dark:bg-accent mr-4 sm:mr-6 ml-auto">
   <span class="sr-only">change color theme</span>
   <span aria-hidden="true" id="toggle-icon"
-    class="absolute left-1 pointer-events-none h-6 w-6 transform rounded-full bg-background-light shadow transition-transform duration-200 ease-in-out flex items-center justify-center">
-    <svg id="icon-light" viewBox="0 0 24 24" focusable="false" class="h-4 w-4 text-accent" aria-hidden="true">
+    class="absolute left-1 flex h-6 w-6 transform items-center justify-center rounded-full bg-background-light shadow-md transition-transform duration-300 ease-in-out">
+    <svg id="icon-dark" viewBox="0 0 24 24" focusable="false" class="h-4 w-4 hidden text-accent opacity-90" aria-hidden="true">
       <path fill="currentColor"
         d="M21.4,13.7C20.6,13.9,19.8,14,19,14c-5,0-9-4-9-9c0-0.8,0.1-1.6,0.3-2.4c0.1-0.3,0-0.7-0.3-1 c-0.3-0.3-0.6-0.4-1-0.3C4.3,2.7,1,7.1,1,12c0,6.1,4.9,11,11,11c4.9,0,9.3-3.3,10.6-8.1c0.1-0.3,0-0.7-0.3-1 C22.1,13.7,21.7,13.6,21.4,13.7z">
       </path>
     </svg>
-    <svg id="icon-dark" viewBox="0 0 24 24" focusable="false" class="h-4 w-4 hidden text-secondary-accent"
+    <svg id="icon-light" viewBox="0 0 24 24" focusable="false" class="h-4 w-4 text-secondary-accent opacity-90"
       aria-hidden="true">
       <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor">
         <circle cx="12" cy="12" r="5"></circle>
@@ -26,44 +26,59 @@
 </button>
 
 <script>
+  let mounted = false;
+
   function setupThemeToggle() {
-  const toggleButton = document.getElementById("toggle");
-  const toggleIcon = document.getElementById("toggle-icon");
-  const iconLight = document.getElementById("icon-light");
-  const iconDark = document.getElementById("icon-dark");
+    if (mounted) return;
 
-  function toggleDarkMode() {
-    const isDarkMode = document.documentElement.classList.toggle("dark");
-    toggleButton.setAttribute("aria-pressed", isDarkMode);
+    const toggle = document.getElementById('toggle');
+    const toggleIcon = document.getElementById('toggle-icon');
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
 
-    if (isDarkMode) {
-      toggleIcon.classList.add("translate-x-6");
-      iconLight.classList.add("hidden");
-      iconDark.classList.remove("hidden");
-    } else {
-      toggleIcon.classList.remove("translate-x-6");
-      iconLight.classList.remove("hidden");
-      iconDark.classList.add("hidden");
+    if (!toggle || !toggleIcon || !iconLight || !iconDark) return;
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+
+      if (isDark) {
+        toggleIcon.classList.add('translate-x-6');
+        iconLight.classList.add('hidden');
+        iconDark.classList.remove('hidden');
+      } else {
+        toggleIcon.classList.remove('translate-x-6');
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      }
+
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 
-    localStorage.setItem("darkMode", isDarkMode);
+    // 初期テーマの設定
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark');
+      toggleIcon.classList.add('translate-x-6');
+      iconLight.classList.add('hidden');
+      iconDark.classList.remove('hidden');
+    } else {
+      // ライトモードの初期状態
+      iconLight.classList.remove('hidden');
+      iconDark.classList.add('hidden');
+    }
+
+    toggle.addEventListener('click', toggleTheme);
+    mounted = true;
   }
 
-  const savedDarkMode = localStorage.getItem("darkMode") === "true";
-  if (savedDarkMode) {
-    document.documentElement.classList.add("dark");
-    toggleButton.setAttribute("aria-pressed", "true");
-    toggleIcon.classList.add("translate-x-6");
-    iconLight.classList.add("hidden");
-    iconDark.classList.remove("hidden");
-  }
+  // 初期セットアップ
+  setupThemeToggle();
 
-  toggleButton.addEventListener("click", toggleDarkMode);
-}
-
-// Initial setup
-setupThemeToggle();
-
-// Re-run setup on Astro page changes
-document.addEventListener('astro:after-swap', setupThemeToggle);
+  // Astroページ遷移後に再セットアップ
+  document.addEventListener('astro:after-swap', () => {
+    mounted = false;
+    setupThemeToggle();
+  });
 </script>
