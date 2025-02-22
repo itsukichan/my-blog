@@ -2,7 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import { getWorkDetail, getWorks } from "@libs/microcms";
 import { Image } from "astro:assets";
-import type { Work } from "@types/index";
+import type { Work } from "@types";
+import { formatDate } from "@utils/date";
 
 import "@styles/cms.css";
 
@@ -27,24 +28,8 @@ const work = await getWorkDetail(workId as string);
       </h1>
       <div class="mt-4 flex flex-row sm:flex-column flex-wrap gap-1 sm:gap-4">
         <span class="text-background-dark dark:text-background-light">
-          公開日: {
-            new Date(work.publishedAt)
-              .toLocaleString()
-              .split(" ")[0]
-              .replace(/\//g, "-")
-          }
+          公開日: {formatDate(work.publishedAt)}
         </span>
-        {
-          work.updatedAt && (
-            <span class="text-background-dark dark:text-background-light">
-              更新日:{" "}
-              {new Date(work.updatedAt)
-                .toLocaleString()
-                .split(" ")[0]
-                .replace(/\//g, "-")}
-            </span>
-          )
-        }
       </div>
 
       <ul class="mt-4 sm:mt-4 flex gap-2">

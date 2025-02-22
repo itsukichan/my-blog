@@ -33,11 +33,6 @@ const { title, publishedAt, updatedAt, visualUrl, tags, content, contentId } = A
     <span class="text-background-dark dark:text-background-light">
       公開日: {formatDate(publishedAt)}
     </span>
-    {updatedAt && (
-      <span class="text-background-dark dark:text-background-light">
-        更新日: {formatDate(updatedAt)}
-      </span>
-    )}
   </div>
 
   {tags && (
