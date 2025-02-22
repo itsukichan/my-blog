@@ -1,10 +1,10 @@
 ---
-const { link, text, color } = Astro.props;
+const { link, text, color, blank } = Astro.props;
 const buttonClass = color === 'accent' ? 'bg-accent' : 'bg-secondary-accent';
 ---
 
 <a href={link} class={`rounded-md px-4 py-3 text-sm text-background-light font-semibold
-  shadow-sm ${buttonClass} flex items-center justify-center relative`}>
+  shadow-sm ${buttonClass} flex items-center justify-center relative`} target={blank ? '_blank' : '_self'}>
   {text}
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
     class="w-4 h-4 absolute right-2 sm:right-4">

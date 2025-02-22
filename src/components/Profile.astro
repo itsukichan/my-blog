@@ -18,6 +18,7 @@ const profileDetails = {
       title: "TechLog",
       link: "https://techlogwalk.vercel.app",
       color: "accent",
+      blank: true,
     },
   ],
 };
@@ -46,7 +47,7 @@ const profileDetails = {
     class="grid grid-cols-2 sm:px-24 gap-4 sm:gap-10 sm:col-span-4 mt-10 justify-center"
   >
     {profileDetails.links.map((link) => (
-      <Button link={link.link} text={link.title} color={link.color} />
+      <Button link={link.link} text={link.title} color={link.color} blank={link.blank} />
     ))}
   </div>
 </section>
