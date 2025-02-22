@@ -15,11 +15,11 @@ const { title, publishedAt, imageUrl, link, tags } = Astro.props;
 ---
 
 <article
-  class="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl
+  class="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-background-dark shadow-lg hover:shadow-xl
   transition-all duration-300 animate-fade-in hover:-translate-y-1"
 >
   <a href={link} class="relative block h-48 sm:h-52 overflow-hidden">
-    <div class="absolute inset-0 bg-gray-900/10 group-hover:bg-gray-900/20 transition-colors z-10"></div>
+    <div class="absolute inset-0 bg-gray-900/10 dark:bg-black/30 group-hover:bg-gray-900/20 dark:group-hover:bg-black/40 transition-colors z-10"></div>
     <Image
       src={imageUrl}
       alt={title}
@@ -31,18 +31,18 @@ const { title, publishedAt, imageUrl, link, tags } = Astro.props;
     />
   </a>
 
-  <div class="flex flex-1 flex-col justify-between p-6 bg-white dark:bg-gray-800">
+  <div class="flex flex-1 flex-col justify-between p-6 bg-white dark:bg-background-dark">
     <div class="flex-1">
       <a
         href={link}
-        class="block group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+        class="block group-hover:text-accent dark:group-hover:text-accent transition-colors"
       >
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-background-light">
           {title}
         </h3>
         <time
           datetime={publishedAt}
-          class="mt-2 block text-sm text-gray-600 dark:text-gray-400"
+          class="mt-2 block text-sm text-gray-600 dark:text-gray-300"
         >
           {formatDate(publishedAt)}
         </time>
@@ -57,7 +57,7 @@ const { title, publishedAt, imageUrl, link, tags } = Astro.props;
   </div>
 
   <div
-    class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary-500 to-secondary-500
+    class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-accent to-accent/70
     transition-all duration-300 group-hover:w-full"
   >
   </div>
