@@ -91,7 +91,27 @@ module.exports = {
         "100%": { transform: "translateY(0)", opacity: "1" },
       },
     },
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            // プロジェクトに合わせてカスタマイズ
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+            "blockquote p:first-of-type::before": {
+              content: '""',
+            },
+            "blockquote p:last-of-type::after": {
+              content: '""',
+            },
+          },
+        },
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };

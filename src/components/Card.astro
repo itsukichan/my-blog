@@ -44,7 +44,7 @@ const { title, publishedAt, imageUrl, link, tags } = Astro.props;
           datetime={publishedAt}
           class="mt-2 block text-sm text-gray-600 dark:text-gray-300"
         >
-          {formatDate(publishedAt)}
+          リリース日：{formatDate(publishedAt)}
         </time>
       </a>
 

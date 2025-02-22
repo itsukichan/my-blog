@@ -32,8 +32,7 @@ const work = await getWorkDetail(workId as string);
         </span>
       </div>
       <div
-        id="work-content"
-        class="prose prose-lg dark:prose-invert text-background-dark dark:text-background-light mt-4 sm:mt-6"
+        class="prose prose-lg max-w-none dark:prose-invert text-background-dark dark:text-background-light mt-4 sm:mt-6"
         set:html={work.body}
       />
     </section>
