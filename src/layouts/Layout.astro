@@ -2,7 +2,6 @@
 export interface Props {
   title: string;
 }
-import { ViewTransitions } from 'astro:transitions';
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
@@ -29,7 +28,7 @@ const { title } = Astro.props;
     <meta name="twitter:title" content="Koki Miyakubo" />
     <meta name="robots" content="noindex" />
     <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
-    <ViewTransitions />
+    <meta name="view-transition" content="same-origin" />
     <script is:inline>
       // ダークモードの初期化スクリプト
       const theme = (() => {
