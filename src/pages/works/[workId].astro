@@ -4,7 +4,6 @@ import { getWorkDetail, getWorks } from "@libs/microcms";
 import { Image } from "astro:assets";
 import type { Work } from "@types";
 import { formatDate } from "@utils/date";
-import Tag from "@components/Tag.astro";
 
 import "@styles/cms.css";
 
@@ -20,31 +19,22 @@ const work = await getWorkDetail(workId as string);
 ---
 
 <Layout title={`${work.title} - Koki Miyakubo - Homepage`}>
-    <section class="bg-opacity-25">
+    <section class="container mx-auto  bg-opacity-25">
       <Image src={work.mainvisual.url} alt={work.title} width={1000} height={1000} class="w-full h-auto" loading="eager" format="webp" quality={80} />
       <h1
-        class="text-2xl font-bold tracking-tight text-gray-800 dark:text-gray-100 sm:text-4xl mt-6 sm:mt-10"
+        class="text-2xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl mt-6 sm:mt-10"
       >
         {work.title}
       </h1>
-      <div class="mt-4">
-        <span class="text-gray-600 dark:text-gray-400">
-          公開日: {formatDate(work.publishedAt)}
+      <div class="mt-4 flex flex-row sm:flex-column flex-wrap gap-1 sm:gap-4">
+        <span class="text-background-dark dark:text-background-light">
+          リリース日: {formatDate(work.publishedAt)}
         </span>
       </div>
-
-      {work.tags && work.tags.length > 0 && (
-        <ul class="mt-4 flex gap-2">
-          {work.tags.map((tag: string) => (
-            <Tag text={tag} />
-          ))}
-        </ul>
-      )}
-
       <div
         id="work-content"
-        class="prose prose-gray dark:prose-invert mt-8 sm:mt-10"
-        set:html={work.content}
+        class="prose prose-lg dark:prose-invert text-background-dark dark:text-background-light mt-4 sm:mt-6"
+        set:html={work.body}
       />
     </section>
 </Layout>
