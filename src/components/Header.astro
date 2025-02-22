@@ -24,123 +24,108 @@ const sectionsData = [
 
 <header class="sticky top-0 z-30 w-full bg-opacity-25 backdrop-blur-lg rounded-lg shadow-lg">
   <nav class="mx-auto flex max-w-2xl items-center justify-between p-6 sm:px-8" aria-label="Global">
-    <SiteLogo />
+    <div class="-m-1.5 p-1.5">
+      <SiteLogo />
+    </div>
     <ThemeToggleButton />
     <HamburgerButton />
     <NavigationLinks sections={sectionsData} />
   </nav>
+</header>
 
-  <div
-    id="mobile-menu"
-    class="sm:hidden fixed inset-0 z-20 transform transition-transform duration-300 ease-in-out translate-x-full"
-  >
-    <div class="fixed inset-0 z-20"></div>
-    <div
-      class="fixed top-0 min-h-screen right-0 z-20 w-full overflow-y-auto bg-background-light dark:bg-background-dark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-    >
-      <div class="flex items-center justify-between">
-        <a href="/" class="-m-1.5 p-1.5 flex gap-2 items-center">
-          <svg
-            class="h-8 w-auto fill-current text-background-dark dark:text-background-light"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 375 374.999991"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            zoomAndPan="magnify"
-          >
-            <clipPath id="a"><path d="m0 43.636719h375v288h-375zm0 0"></path></clipPath>
-            <g clip-path="url(#a)">
-              <path d="m374.703125 126.519531c-.019531 17.105469-3.546875 40.933594-7.113281 48.410157-5.90625 12.402343-13.011719-.421876-107.527344-55.597657-14.980469-8.746093-33.167969-12.476562-24.761719-23.390625 52.773438-68.527344 128.421875-55.882812 139.402344 30.578125zm-207.597656 85.144531c-18.480469 36.71875-64.96875 83.34375-90.941407 107.148438-16.425781 15.066406-37.917968 2.4375-37.300781-33.546875.289063-50.28125 50.175781-80.195313 74.820313-97.859375 13.546875-9.703125 31.882812-17.632812 46-7.871094 6.703125 4.636719 10.5625 6.570313 10.910156 12.636719.378906 6.773437-.40625 13.359375-3.488281 19.492187zm-38.832031 2.203126c-19.085938 9.847656-17.347657 19.402343-9.621094 20.066406 6.578125-.300782 13.957031-7.046875 15.957031-13.796875.996094-3.339844-2.410156-8.292969-6.335937-6.269531zm203.453124 92.421874c-9.003906 28.414063-45.5625 3.945313-66.164062-17.480468-15.097656-15.6875-23.335938-21.15625-48.582031-61.40625-5.300781-8.445313-8.574219-17.648438-9.417969-27.898438-.769531-9.394531 9.386719-22.695312 21.953125-22.820312 32.898437-.320313 70.386719 35.222656 89.054687 64.378906 12.339844 19.265625 22.007813 37.285156 13.15625 65.226562zm-85.121093-83.523437c-5.972657-11.730469-22.261719-14.675781-17.835938-1.367187 1.871094 5.617187 6.070313 9.347656 10.421875 12.921874 2.90625 2.386719 5.738282 2.089844 7.816406-1.035156 2.203126-3.019531.421876-8.890625-.402343-10.519531zm-245.335938-68.273437c2.425781 11.203124 12.890625 11.828124 23.207031 6.59375 10.9375-5.550782 36.765626-18.683594 47.414063-24.574219 67.484375-37.300781 74.097656-27.820313 67.082031-43.785157-11.546875-26.238281-42.3125-42.082031-60.511718-47.238281-19.464844-5.507812-39.847657.679688-55.554688 26.484375-13.957031 22.921875-26.191406 61.480469-21.636719 82.519532zm204.058594 127.933593c-26.296875-1.335937-29.386719-2.191406-36.695313.40625-9.546874 3.386719-12.863281 13.089844-7.492187 21.683594 5.105469 8.164063 11.5 15.367187 18.070313 22.332031 5.824218 6.183594 13.59375 5.921875 19.460937-.226562 1.964844-2.0625 17.765625-23.820313 17.644531-32.84375-.726562-6.925782-3.71875-10.988282-10.988281-11.351563zm0 0" fill="currentColor"></path>
-            </g>
-          </svg>
-          <span class="font-semibold text-md text-background-dark dark:text-background-light">
-            Koki Miyakubo
-          </span>
-        </a>
-        <button
-          id="close-menu"
-          type="button"
-          class="-m-2.5 rounded-md p-2.5 text-gray-700"
-          aria-label="メニューを閉じる"
-        >
-          <svg
-            class="h-6 w-6 text-background-dark dark:text-background-light"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
+<!-- モバイルメニュー -->
+<div
+  id="mobile-menu"
+  class="sm:hidden fixed inset-0 z-50 bg-background-light dark:bg-background-dark transform transition-transform duration-300 ease-in-out translate-x-full"
+>
+  <div class="h-full w-full px-6 py-6">
+    <div class="flex items-center justify-between">
+      <div class="-m-1.5 p-1.5">
+        <SiteLogo />
       </div>
-      <div class="mt-6 flow-root">
-        <div class="-my-6 divide-y divide-gray-500/10">
-          <div class="space-y-2 py-6">
-            {
-              sectionsData.map((data) => (
-                <a
-                  href={data.link}
-                  class="-mx-3 flex items-center align-center gap-1 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-background-dark dark:text-background-light"
-                  target={data.blank ? "_blank" : ""}
-                  rel={data.blank ? "noopener noreferrer" : ""}
-                >
-                  {data.icon && (
-                    <svg
-                      class="h-6 w-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  )}
-                  {data.title}
-                </a>
-              ))
-            }
-          </div>
+      <button
+        id="close-menu"
+        type="button"
+        class="-m-2.5 rounded-md p-2.5 text-background-dark dark:text-background-light"
+      >
+        <span class="sr-only">メニューを閉じる</span>
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mt-6 flow-root">
+      <div class="-my-6 divide-y divide-gray-500/10">
+        <div class="space-y-2 py-6">
+          {
+            sectionsData.map((data) => (
+              <a
+                href={data.link}
+                class="-mx-3 flex items-center gap-1 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-background-dark dark:text-background-light"
+                target={data.blank ? "_blank" : ""}
+                rel={data.blank ? "noopener noreferrer" : ""}
+              >
+                {data.icon && (
+                  <svg
+                    class="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                )}
+                {data.title}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
   </div>
-</header>
+</div>
 
 <script>
   function setupMobileMenu() {
     const openMenuButton = document.getElementById("open-menu");
     const closeMenuButton = document.getElementById("close-menu");
     const mobileMenu = document.getElementById("mobile-menu");
+    const html = document.documentElement;
 
     if (!openMenuButton || !closeMenuButton || !mobileMenu) return;
 
     function toggleMenu(isOpen: boolean) {
-      if (!mobileMenu) return;
       mobileMenu.classList.toggle("translate-x-full", !isOpen);
       mobileMenu.classList.toggle("translate-x-0", isOpen);
-      document.body.style.overflow = isOpen ? "hidden" : "";
+
+      if (isOpen) {
+        html.style.overflow = 'hidden';
+      } else {
+        html.style.overflow = '';
+      }
     }
 
     openMenuButton.addEventListener("click", () => toggleMenu(true));
     closeMenuButton.addEventListener("click", () => toggleMenu(false));
 
-    // ESCキーでメニューを閉じる
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleMenu(false);
     });
 
-    // 初期状態
     toggleMenu(false);
   }
 
-  // 初期セットアップ
   setupMobileMenu();
-
-  // Astroページ遷移後に再セットアップ
   document.addEventListener("astro:after-swap", setupMobileMenu);
 </script>
