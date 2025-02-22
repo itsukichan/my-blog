@@ -43,13 +43,19 @@ const { title } = Astro.props;
       })();
       if (theme === 'dark') document.documentElement.classList.add('dark');
     </script>
+    <script>
+      // ページ遷移時にスクロール位置をリセット
+      document.addEventListener('astro:page-load', () => {
+        window.scrollTo(0, 0);
+      });
+    </script>
   </head>
   <body
-    class="relative min-h-screen bg-background-light dark:bg-dark-background-light w-full overflow-x-hidden"
+    class="relative min-h-screen bg-background-light dark:bg-background-dark w-full overflow-x-hidden"
   >
-    <div class="relative w-full">
+    <div class="relative flex flex-col min-h-screen animate-fade-in">
       <Header />
-      <main class="mx-auto max-w-2xl px-6 sm:px-8">
+      <main class="flex-1 mx-auto w-full max-w-2xl px-6 sm:px-8">
         <slot />
       </main>
       <Footer />

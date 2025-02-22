@@ -1,9 +1,58 @@
-:where(button, [type="button"], [type="reset"], [type="submit"]) {
-  touch-action: manipulation;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 124, 58, 237;
+    --color-secondary: 22, 163, 74;
+  }
+
+  body {
+    @apply antialiased text-gray-800 dark:text-gray-100 bg-background-light dark:bg-background-dark transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-primary-200 dark:bg-primary-800;
+  }
 }
+
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose a {
+    @apply text-primary-600 dark:text-primary-400 no-underline hover:underline;
+  }
+
+  .prose img {
+    @apply rounded-lg shadow-lg;
+  }
+}
+
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
-body {
-  overflow-y: scroll;
+
+/* Better dark mode */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
 }

@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { formatDate } from '@utils/date';
+
+interface Props {
+  title: string;
+  publishedAt: string;
+  updatedAt?: string;
+  visualUrl: string;
+  tags?: string[];
+  content: string;
+  contentId: string;
+}
+
+const { title, publishedAt, updatedAt, visualUrl, tags, content, contentId } = Astro.props;
+---
+
+<section class="bg-opacity-25">
+  <Image
+    src={visualUrl}
+    alt={title}
+    width={1000}
+    height={1000}
+    class="w-full h-auto"
+    loading="eager"
+    format="webp"
+  />
+  <h1 class="text-2xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl mt-6 sm:mt-10">
+    {title}
+  </h1>
+
+  <div class="mt-4 flex flex-row sm:flex-column flex-wrap gap-1 sm:gap-4">
+    <span class="text-background-dark dark:text-background-light">
+      公開日: {formatDate(publishedAt)}
+    </span>
+    {updatedAt && (
+      <span class="text-background-dark dark:text-background-light">
+        更新日: {formatDate(updatedAt)}
+      </span>
+    )}
+  </div>
+
+  {tags && (
+    <ul class="mt-4 sm:mt-4 flex gap-2">
+      {tags.map((tag: string) => (
+        <li class="text-background-dark dark:text-background-light border border-background-dark dark:border-background-light rounded-full px-2 py-1">
+          {tag}
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <div
+    id={`${contentId}-content`}
+    class="text-background-dark dark:text-background-light mt-4 sm:mt-6"
+    set:html={content}
+  />
+</section>

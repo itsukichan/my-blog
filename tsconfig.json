@@ -8,7 +8,10 @@
       "@layouts/*": ["src/layouts/*"],
       "@images/*": ["src/images/*"],
       "@libs/*": ["src/libs/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"],
+      "@types": ["src/types/index"]
     },
     // "importsNotUsedAsValues": "error"
     "strictNullChecks": true,

@@ -5,25 +5,16 @@ const client = MicroCMS.createClient({
   apiKey: import.meta.env.API_KEY,
 })
 
-export const getBlogs = async (queries: MicroCMS.MicroCMSQueries) => {
-  return await client.get({ endpoint: "blogs", queries })
-}
 
-export const getPortfolios = async (queries: MicroCMS.MicroCMSQueries) => {
-  return await client.get({ endpoint: "portfolios", queries })
+export const getWorks = async (queries: MicroCMS.MicroCMSQueries) => {
+  return await client.get({ endpoint: "works", queries })
 }
 
 
-export const getBlogDetail = async (
-  blogId: string,
+
+export const getWorkDetail = async (
+  workId: string,
   queries?: MicroCMS.MicroCMSQueries
 ) => {
-  return await client.getListDetail({ endpoint: "blogs", contentId: blogId, queries })
-}
-
-export const getPortfolioDetail = async (
-  portfolioId: string,
-  queries?: MicroCMS.MicroCMSQueries
-) => {
-  return await client.getListDetail({ endpoint: "portfolios", contentId: portfolioId, queries })
+  return await client.getListDetail({ endpoint: "works", contentId: workId, queries })
 }

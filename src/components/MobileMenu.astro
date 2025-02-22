@@ -1,2 +1,64 @@
 ---
+import type { Section } from '../types';
+import SiteLogo from './SiteLogo.astro';
+
+interface Props {
+  sections: Section[];
+}
+
+const { sections } = Astro.props;
 ---
+
+<div
+  id="mobile-menu"
+  class="sm:hidden fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out translate-x-full"
+>
+  <!-- オーバーレイ -->
+  <div class="fixed inset-0 bg-black/25"></div>
+
+  <!-- メニューコンテンツ -->
+  <div class="fixed inset-y-0 right-0 w-[min(100vw,20rem)] bg-background-light dark:bg-background-dark">
+    <div class="h-full px-6 py-6 overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <div class="-m-1.5 p-1.5">
+          <SiteLogo />
+        </div>
+        <button
+          id="close-menu"
+          type="button"
+          class="-m-2.5 rounded-md p-2.5 text-background-dark dark:text-background-light"
+        >
+          <span class="sr-only">メニューを閉じる</span>
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="mt-6 flow-root">
+        <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="space-y-2 py-6">
+            {
+              sections.map((data) => (
+                <a
+                  href={data.link}
+                  class="-mx-3 flex items-center gap-1 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-background-dark dark:text-background-light hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  target={data.blank ? "_blank" : ""}
+                  rel={data.blank ? "noopener noreferrer" : ""}
+                >
+                  {data.title}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,43 +1,44 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { getBlogDetail, getBlogs, } from "@libs/microcms";
+import { getWorkDetail, getWorks } from "@libs/microcms";
 import { Image } from "astro:assets";
+import type { Work } from "@types/index";
 
 import "@styles/cms.css";
 
 export async function getStaticPaths() {
-  const response = await getBlogs({ fields: ["id"] });
-  return response.contents.map((blog: any) => ({
-    params: { blogId: blog.id },
+  const works = await getWorks({ fields: ["id"] });
+  return works.contents.map((work: Work) => ({
+    params: { workId: work.id },
   }));
 }
 
-const { blogId } = Astro.params;
-const blog = await getBlogDetail(blogId as string);
+const { workId } = Astro.params;
+const work = await getWorkDetail(workId as string);
 ---
 
-<Layout title={`${blog.title} - Koki Miyakubo - Homepage`}>
+<Layout title={`${work.title} - Koki Miyakubo - Homepage`}>
     <section class="bg-opacity-25">
-      <Image src={blog.keyVisual.url} alt={blog.title} width={1000} height={1000} class="w-full h-auto" loading="eager" format="webp" />
+      <Image src={work.mainvisual.url} alt={work.title} width={1000} height={1000} class="w-full h-auto" loading="eager" format="webp" />
       <h1
         class="text-2xl font-bold tracking-tight text-background-dark dark:text-background-light sm:text-4xl mt-6 sm:mt-10"
       >
-        {blog.title}
+        {work.title}
       </h1>
       <div class="mt-4 flex flex-row sm:flex-column flex-wrap gap-1 sm:gap-4">
         <span class="text-background-dark dark:text-background-light">
           公開日: {
-            new Date(blog.publishedAt)
+            new Date(work.publishedAt)
               .toLocaleString()
               .split(" ")[0]
               .replace(/\//g, "-")
           }
         </span>
         {
-          blog.updatedAt && (
+          work.updatedAt && (
             <span class="text-background-dark dark:text-background-light">
               更新日:{" "}
-              {new Date(blog.updatedAt)
+              {new Date(work.updatedAt)
                 .toLocaleString()
                 .split(" ")[0]
                 .replace(/\//g, "-")}
@@ -48,7 +49,7 @@ const blog = await getBlogDetail(blogId as string);
 
       <ul class="mt-4 sm:mt-4 flex gap-2">
         {
-          blog.tags.map((tag: string) => {
+          work.tags && work.tags.map((tag: string) => {
             return (
               <li class="text-background-dark dark:text-background-light border border-background-dark dark:border-background-light rounded-full px-2 py-1 ">
                 {tag}
@@ -59,9 +60,9 @@ const blog = await getBlogDetail(blogId as string);
       </ul>
 
       <div
-        id="blog-content"
+        id="work-content"
         class="text-background-dark dark:text-background-light mt-4 sm:mt-6"
-        set:html={blog.content}
+        set:html={work.content}
       />
     </section>
 </Layout>

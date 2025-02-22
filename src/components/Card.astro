@@ -1,60 +1,48 @@
 ---
 import { Image } from 'astro:assets'
+import { formatDate } from '@utils/date'
+import Tag from './Tag.astro'
 
-export interface Props {
-title: string;
-href: string;
-updatedAt: string;
-publishedAt: string;
-keyVisual: {
-url: string;
-};
-tags?: string[];
+interface Props {
+  title: string;
+  publishedAt: string;
+  imageUrl: string;
+  link: string;
+  tags?: string[];
 }
 
-const { title, href, updatedAt, publishedAt, keyVisual, tags } = Astro.props;
-
-const date = new Date(updatedAt);
-const year = date.getFullYear();
-const month = String(date.getMonth() + 1).padStart(2, '0');
-const day = String(date.getDate()).padStart(2, '0');
-const formattedDate = `${year}-${month}-${day}`;
+const { title, publishedAt, imageUrl, link, tags } = Astro.props;
 ---
 
-<a href={href} class="grid grid-rows-subgrid gap-y-4 row-span-2">
-  <div class="relative w-full">
-    <Image class="aspect-[16/9] w-full rounded-2xl object-cover sm:aspect-[3/2]" src={keyVisual.url} width={272}
-      height={181} alt={title} loading="eager" format="webp" />
+<article class="group relative flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in">
+  <div class="relative h-48 sm:h-64 overflow-hidden">
+    <Image
+      src={imageUrl}
+      alt={title}
+      width={500}
+      height={300}
+      class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+      format="webp"
+    />
   </div>
-  <div class="max-w-xl">
-    <div class="text-xs">
-      <time datetime={publishedAt} class="text-background-dark dark:text-background-light">公開日: {formattedDate}</time>
-      {
-        updatedAt && (
-          <time datetime={updatedAt} class="text-background-dark dark:text-background-light">更新日: {formattedDate}</time>
-        )
-      }
-    </div>
-    <div class="group relative">
-      <h3 class="mt-3 text-lg font-semibold leading-6 text-background-dark dark:text-background-light">
-        {title}
-      </h3>
-      {
-      tags && (
-      <ul class="flex gap-1 flex-wrap mt-2 text-xs">
-        {
-        tags.map((tag: string) => {
-        return (
-        <li
-          class="text-background-dark dark:text-background-light border border-background-dark dark:border-background-light rounded-full px-2 py-1 ">
-          {tag}
-        </li>
-        )
-        }).sort()
-        }
-      </ul>
-      )
-      }
+  <div class="flex flex-1 flex-col justify-between bg-background-light dark:bg-background-dark p-6">
+    <div class="flex-1">
+      <a href={link} class="mt-2 block">
+        <h3 class="text-xl font-semibold text-background-dark dark:text-background-light">
+          {title}
+        </h3>
+        <time
+          datetime={publishedAt}
+          class="block text-sm text-background-dark dark:text-background-light mt-2"
+        >
+          {formatDate(publishedAt)}
+        </time>
+      </a>
+      {tags && tags.length > 0 && (
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {tags.map(tag => <Tag text={tag} />)}
+        </ul>
+      )}
     </div>
   </div>
-</a>
+</article>

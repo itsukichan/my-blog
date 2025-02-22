@@ -1,6 +1,6 @@
 # TechPanda
 
-A personal portfolio and blog site built with Astro and TailwindCSS.
+A personal works and blog site built with Astro and TailwindCSS.
 
 ## Features
 
@@ -9,4 +9,4 @@ A personal portfolio and blog site built with Astro and TailwindCSS.
 - 🌙 Dark mode support
 - 📱 Responsive design
 - 🎨 Clean and minimal UI
-- 📝 Portfolio powered by microCMS
+- 📝 works powered by microCMS

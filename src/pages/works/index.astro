@@ -1,0 +1,28 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Section from "@components/Section.astro";
+import Card from "@components/Card.astro";
+import { getWorks } from "@libs/microcms";
+import type { Work } from "@types";
+// APIエンドポイントを構築
+const works = await getWorks({
+  fields: ["id", "title", "publishedAt", "mainvisual"],
+});
+---
+
+<Layout title="Works | Koki Miyakubo">
+  <Section title="Works" subtitle="制作物一覧">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
+      {
+        works.contents.map((work: Work) => (
+          <Card
+            title={work.title}
+            publishedAt={work.publishedAt}
+            imageUrl={work.mainvisual.url}
+            link={`/works/${work.id}`}
+          />
+        ))
+      }
+    </div>
+  </Section>
+</Layout>
